@@ -30,7 +30,7 @@ describe("WorldCover map assets", () => {
           (byte & 0x80) !== 0 && ((byte & 0x1f) === 5 || (byte & 0x1f) === 6),
       ),
     ).toBe(false);
-    expect(map.totalLandValue()).toBe(6_282_340.3);
+    expect(map.totalLandValue()).toBe(6_282_340.34);
     expect(manifest.tiny_water_cleanup).toEqual({
       max_component_size: 2,
       components_filled: 24_446,
@@ -75,7 +75,7 @@ describe("WorldCover map assets", () => {
     });
     expect(data.length).toBe(8000 * 3220);
     expect(map.numLandTiles()).toBe(metadata!.num_land_tiles);
-    expect(map.totalLandValue()).toBeGreaterThan(6_282_340.3);
+    expect(map.totalLandValue()).toBeGreaterThan(6_282_340.34);
 
     const scale = metadata!.width / manifest.map.width;
     for (const nation of manifest.nations) {

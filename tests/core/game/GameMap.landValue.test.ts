@@ -31,7 +31,7 @@ describe("GameMap land value", () => {
     expect(Array.from(terrain, (_, tile) => map.landValue(tile))).toEqual([
       150, 5, 0.2, 0, 0, 0.02, 0, 0, 0,
     ]);
-    expect(map.totalLandValue()).toBe(155.2);
+    expect(map.totalLandValue()).toBe(155.22);
     expect(map.terrainType(0)).toBe(TerrainType.Plains);
     expect(map.terrainType(5)).toBe(TerrainType.Highland);
     expect(map.terrainType(6)).toBe(TerrainType.Mountain);

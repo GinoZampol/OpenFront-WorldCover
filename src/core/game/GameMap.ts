@@ -8,7 +8,7 @@ export type LandValueMode = "uniform" | "worldcover";
 export const LAND_VALUE_SCALE = 100;
 
 export function normalizeLandValue(value: number): number {
-  return Math.round(value * 10) / 10;
+  return Math.round(value * 100) / 100;
 }
 
 export interface GameMap {

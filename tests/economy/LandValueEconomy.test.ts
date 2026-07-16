@@ -23,6 +23,8 @@ describe("land-value economy", () => {
   it("tracks value through conquest and uses it for army capacity", () => {
     const terrain = new Uint8Array(16).fill(0x81); // cropland
     terrain[0] = 0x80; // built-up
+    terrain[2] = 0x8a; // deep forest
+    terrain[3] = 0x8a; // deep forest
     const map = new GameMapImpl(4, 4, terrain, 16, "worldcover");
     const mini = new GameMapImpl(
       2,
@@ -68,10 +70,15 @@ describe("land-value economy", () => {
     expect(config.troopIncreaseRate(built)).toBe(11_500 - built.troops());
     expect(config.troopIncreaseRate(crop)).toBe(10_050 - crop.troops());
 
+    crop.conquer(2);
+    crop.conquer(3);
+    expect(crop.landValue()).toBe(1005.04);
+    expect(config.maxTroops(crop)).toBe(10_050.4);
+
     crop.conquer(0);
     expect(built.landValue()).toBe(1000);
-    expect(crop.landValue()).toBe(1155);
+    expect(crop.landValue()).toBe(1155.04);
     expect(config.maxTroops(built)).toBe(10_000);
-    expect(config.maxTroops(crop)).toBe(11_550);
+    expect(config.maxTroops(crop)).toBe(11_550.4);
   });
 });
