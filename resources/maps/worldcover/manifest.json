@@ -1,0 +1,225 @@
+{
+  "id": "WorldCover",
+  "name": "WorldCover Economy",
+  "display_name": "WorldCover Economy",
+  "translation_key": "map.worldcover",
+  "categories": [
+    "new",
+    "featured",
+    "world"
+  ],
+  "multiplayer_frequency": 1,
+  "land_value_mode": "worldcover",
+  "nations": [
+    {
+      "coordinates": [
+        1459,
+        794
+      ],
+      "name": "United States",
+      "flag": "us"
+    },
+    {
+      "coordinates": [
+        1315,
+        493
+      ],
+      "name": "Canada",
+      "flag": "ca"
+    },
+    {
+      "coordinates": [
+        1386,
+        1078
+      ],
+      "name": "Mexico",
+      "flag": "mx"
+    },
+    {
+      "coordinates": [
+        2275,
+        1667
+      ],
+      "name": "Brazil",
+      "flag": "br"
+    },
+    {
+      "coordinates": [
+        2061,
+        2093
+      ],
+      "name": "Argentina",
+      "flag": "ar"
+    },
+    {
+      "coordinates": [
+        3146,
+        509
+      ],
+      "name": "United Kingdom",
+      "flag": "gb"
+    },
+    {
+      "coordinates": [
+        3235,
+        669
+      ],
+      "name": "France",
+      "flag": "fr"
+    },
+    {
+      "coordinates": [
+        3386,
+        582
+      ],
+      "name": "Germany",
+      "flag": "de"
+    },
+    {
+      "coordinates": [
+        4979,
+        422
+      ],
+      "name": "Russia",
+      "flag": "ru"
+    },
+    {
+      "coordinates": [
+        5050,
+        867
+      ],
+      "name": "China",
+      "flag": "cn"
+    },
+    {
+      "coordinates": [
+        4605,
+        1098
+      ],
+      "name": "India",
+      "flag": "in"
+    },
+    {
+      "coordinates": [
+        4141,
+        918
+      ],
+      "name": "Iran",
+      "flag": "ir"
+    },
+    {
+      "coordinates": [
+        4000,
+        1062
+      ],
+      "name": "Saudi Arabia",
+      "flag": "sa"
+    },
+    {
+      "coordinates": [
+        5581,
+        1933
+      ],
+      "name": "Australia",
+      "flag": "au"
+    },
+    {
+      "coordinates": [
+        3734,
+        1008
+      ],
+      "name": "Egypt",
+      "flag": "eg"
+    },
+    {
+      "coordinates": [
+        3610,
+        1542
+      ],
+      "name": "DR Congo",
+      "flag": "cd"
+    },
+    {
+      "coordinates": [
+        3626,
+        2003
+      ],
+      "name": "South Africa",
+      "flag": "za"
+    },
+    {
+      "coordinates": [
+        5654,
+        829
+      ],
+      "name": "Japan",
+      "flag": "jp"
+    },
+    {
+      "coordinates": [
+        5312,
+        1536
+      ],
+      "name": "Indonesia",
+      "flag": "id"
+    },
+    {
+      "coordinates": [
+        6272,
+        2218
+      ],
+      "name": "New Zealand",
+      "flag": "nz"
+    }
+  ],
+  "map": {
+    "width": 6400,
+    "height": 2576,
+    "num_land_tiles": 4718446
+  },
+  "map4x": {
+    "width": 3200,
+    "height": 1288,
+    "num_land_tiles": 1158765
+  },
+  "map16x": {
+    "width": 1600,
+    "height": 644,
+    "num_land_tiles": 281521
+  },
+  "tiny_water_cleanup": {
+    "max_component_size": 2,
+    "components_filled": 24446,
+    "pixels_filled": 29561
+  },
+  "map8k": {
+    "width": 8000,
+    "height": 3220,
+    "num_land_tiles": 7398527
+  },
+  "map8k4x": {
+    "width": 4000,
+    "height": 1610,
+    "num_land_tiles": 1824226
+  },
+  "tiny_water_cleanup_8k": {
+    "max_component_size": 2,
+    "components_filled": 35662,
+    "pixels_filled": 43617
+  },
+  "map10k": {
+    "width": 10000,
+    "height": 4024,
+    "num_land_tiles": 11633142
+  },
+  "map10k4x": {
+    "width": 5000,
+    "height": 2012,
+    "num_land_tiles": 2882263
+  },
+  "tiny_water_cleanup_10k": {
+    "max_component_size": 2,
+    "components_filled": 47716,
+    "pixels_filled": 58307
+  }
+}
