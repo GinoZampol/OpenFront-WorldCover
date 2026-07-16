@@ -221,7 +221,7 @@ export class Leaderboard extends LitElement implements Controller {
                           this.requestUpdate();
                         }}
                       >
-                        Stats for nerds:
+                        Land value stats:
                         ${this.userSettings.landValueStats() ? "On" : "Off"}
                       </button>
                       <button
