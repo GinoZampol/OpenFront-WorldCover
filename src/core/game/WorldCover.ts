@@ -54,7 +54,7 @@ export const WORLD_COVER_CLASSES: readonly WorldCoverClass[] = [
   {
     magnitude: 10,
     name: "Deep forest",
-    value: 0.2,
+    value: 0.02,
     color: [63, 104, 75],
     resistance: "highland",
   },
