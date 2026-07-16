@@ -81,6 +81,27 @@ describe("TrainStation", () => {
     expect(unit.owner().addGold).toHaveBeenCalledWith(1000n, unit.tile());
   });
 
+  it("handles Factory stop as a trade station", () => {
+    unit.type.mockReturnValue(UnitType.Factory);
+    const station = new TrainStation(game, unit);
+
+    station.onTrainStop(trainExecution);
+
+    expect(unit.owner().addGold).toHaveBeenCalledWith(1000n, unit.tile());
+    expect(gameStats.trainSelfTrade).toHaveBeenCalledWith(player, 1000n);
+  });
+
+  it("uses a Factory as a train trade destination", () => {
+    unit.type.mockReturnValue(UnitType.Factory);
+    const station = new TrainStation(game, unit);
+    const cluster = new Cluster();
+
+    cluster.addStation(station);
+
+    expect(cluster.hasAnyTradeDestination(player)).toBe(true);
+    expect(cluster.availableForTrade(player)).toContain(station);
+  });
+
   it("handles allied trade", () => {
     unit.type.mockReturnValue(UnitType.City);
     player.isFriendly.mockReturnValue(true);

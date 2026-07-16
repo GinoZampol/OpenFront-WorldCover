@@ -9,6 +9,7 @@ import {
 } from "../../../client/Utils";
 import { EventBus } from "../../../core/EventBus";
 import { GameMapType } from "../../../core/game/Game";
+import { UserSettings } from "../../../core/game/UserSettings";
 import { WORLD_COVER_CLASSES } from "../../../core/game/WorldCover";
 import { Controller } from "../../Controller";
 import { GoToPlayerEvent } from "../../TransformHandler";
@@ -28,6 +29,7 @@ interface Entry {
 
 @customElement("leader-board")
 export class Leaderboard extends LitElement implements Controller {
+  private readonly userSettings = new UserSettings();
   public game: GameView | null = null;
   public eventBus: EventBus | null = null;
 
@@ -205,35 +207,66 @@ export class Leaderboard extends LitElement implements Controller {
                   <div
                     class="col-span-2 mb-1 flex items-center justify-between gap-2 font-bold text-white"
                   >
-                    <span>Terrain value per tile</span>
-                    <button
-                      class="rounded border border-slate-500 px-1.5 text-slate-200 hover:bg-white/10"
-                      title=${
-                        this.terrainLegendExpanded
-                          ? "Minimize terrain values"
-                          : "Expand terrain values"
-                      }
-                      @click=${() =>
-                        (this.terrainLegendExpanded =
-                          !this.terrainLegendExpanded)}
-                    >
-                      ${this.terrainLegendExpanded ? "−" : "+"}
-                    </button>
+                    <span>WorldCover information</span>
+                    <div class="flex items-center gap-1.5">
+                      <button
+                        class="rounded border px-1.5 py-0.5 ${
+                          this.userSettings.landValueStats()
+                            ? "border-malibu-blue bg-malibu-blue/20 text-white"
+                            : "border-slate-500 text-slate-300"
+                        } hover:bg-white/10"
+                        title="Show each player's terrain contribution when hovering over their territory"
+                        @click=${() => {
+                          this.userSettings.toggleLandValueStats();
+                          this.requestUpdate();
+                        }}
+                      >
+                        Stats for nerds:
+                        ${this.userSettings.landValueStats() ? "On" : "Off"}
+                      </button>
+                      <button
+                        class="rounded border border-slate-500 px-1.5 text-slate-200 hover:bg-white/10"
+                        title=${
+                          this.terrainLegendExpanded
+                            ? "Minimize WorldCover information"
+                            : "Expand WorldCover information"
+                        }
+                        @click=${() =>
+                          (this.terrainLegendExpanded =
+                            !this.terrainLegendExpanded)}
+                      >
+                        ${this.terrainLegendExpanded ? "−" : "+"}
+                      </button>
+                    </div>
                   </div>
                   ${
                     this.terrainLegendExpanded
-                      ? WORLD_COVER_CLASSES.map(
-                          (entry) => html`
-                            <div class="flex min-w-0 items-center gap-1.5">
+                      ? WORLD_COVER_CLASSES.filter((entry) => entry.value > 0)
+                          .map(
+                            (entry) => html`
+                              <div class="flex min-w-0 items-center gap-1.5">
+                                <span
+                                  class="h-2.5 w-2.5 shrink-0 rounded-sm border border-white/30"
+                                  style=${`background: rgb(${entry.color.join(",")})`}
+                                ></span>
+                                <span class="truncate">${entry.name}</span>
+                                <strong class="ml-auto">${entry.value}</strong>
+                              </div>
+                            `,
+                          )
+                          .concat(html`
+                            <div
+                              class="col-span-2 flex min-w-0 items-center gap-1.5 text-slate-300"
+                            >
                               <span
-                                class="h-2.5 w-2.5 shrink-0 rounded-sm border border-white/30"
-                                style=${`background: rgb(${entry.color.join(",")})`}
+                                class="h-2.5 w-2.5 shrink-0 rounded-sm border border-white/30 bg-slate-500"
                               ></span>
-                              <span class="truncate">${entry.name}</span>
-                              <strong class="ml-auto">${entry.value}</strong>
+                              <span class="truncate"
+                                >Shrubland, wetland, bare & snow</span
+                              >
+                              <strong class="ml-auto">0</strong>
                             </div>
-                          `,
-                        )
+                          `)
                       : null
                   }
                 </div>

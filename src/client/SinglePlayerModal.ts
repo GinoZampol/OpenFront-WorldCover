@@ -42,7 +42,7 @@ import {
 import { terrainMapFileLoader } from "./TerrainMapFileLoader";
 
 const DEFAULT_OPTIONS = {
-  selectedMap: GameMapType.World,
+  selectedMap: GameMapType.WorldCover,
   selectedDifficulty: Difficulty.Easy,
   bots: 400,
   infiniteGold: false,
@@ -60,7 +60,7 @@ const DEFAULT_OPTIONS = {
   goldMultiplierValue: undefined as number | undefined,
   startingGold: false,
   startingGoldValue: undefined as number | undefined,
-  disabledUnits: [] as UnitType[],
+  disabledUnits: [UnitType.City] as UnitType[],
   customAlliances: false,
   customAllianceMinutes: undefined as number | undefined,
   waterNukes: false,
@@ -336,53 +336,6 @@ export class SinglePlayerModal extends BaseModal {
   protected renderBody() {
     const isWorldCover = this.selectedMap === GameMapType.WorldCover;
     const inputCards = [
-      ...(isWorldCover
-        ? [
-            html`<div
-              class="col-span-2 rounded-xl p-4 flex flex-col justify-center gap-3 border border-malibu-blue/50 bg-malibu-blue/20 shadow-[var(--shadow-malibu-blue)]"
-            >
-              <label
-                for="worldcover-map-size"
-                class="text-xs uppercase font-bold tracking-wider text-white"
-              >
-                ${translateText("single_modal.worldcover_map_size")}
-              </label>
-              <select
-                id="worldcover-map-size"
-                class="w-full bg-black/30 border border-white/20 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-malibu-blue/70"
-                @change=${this.handleWorldCoverMapSizeChange}
-              >
-                <option
-                  value=${GameMapSize.Compact}
-                  ?selected=${this.worldCoverMapSize === GameMapSize.Compact}
-                >
-                  ${translateText("single_modal.worldcover_map_size_compact")}
-                </option>
-                <option
-                  value=${GameMapSize.Normal}
-                  ?selected=${this.worldCoverMapSize === GameMapSize.Normal}
-                >
-                  ${translateText("single_modal.worldcover_map_size_standard")}
-                </option>
-                <option
-                  value=${GameMapSize.Large}
-                  ?selected=${this.worldCoverMapSize === GameMapSize.Large}
-                >
-                  ${translateText("single_modal.worldcover_map_size_ultra")}
-                </option>
-                <option
-                  value=${GameMapSize.Maximum}
-                  ?selected=${this.worldCoverMapSize === GameMapSize.Maximum}
-                >
-                  ${translateText("single_modal.worldcover_map_size_maximum")}
-                </option>
-              </select>
-              <p class="text-[11px] leading-relaxed text-white/50">
-                ${translateText("single_modal.worldcover_map_size_hint")}
-              </p>
-            </div>`,
-          ]
-        : []),
       html`<toggle-input-card
         .labelKey=${"single_modal.max_timer"}
         .checked=${this.maxTimer}
@@ -464,6 +417,9 @@ export class SinglePlayerModal extends BaseModal {
               map: {
                 selected: this.selectedMap,
                 useRandom: this.useRandomMap,
+                afterPicker: isWorldCover
+                  ? this.renderWorldCoverMapSizes()
+                  : undefined,
                 showMedals: this.showAchievements,
                 mapWins: this.mapWins,
               },
@@ -590,7 +546,10 @@ export class SinglePlayerModal extends BaseModal {
       // Pace only matters when the mode is on (startGame drops it when off).
       (this.doomsdayClock &&
         this.doomsdayClockSpeed !== DEFAULT_OPTIONS.doomsdayClockSpeed) ||
-      this.disabledUnits.length > 0
+      this.disabledUnits.length !== DEFAULT_OPTIONS.disabledUnits.length ||
+      this.disabledUnits.some(
+        (unit) => !DEFAULT_OPTIONS.disabledUnits.includes(unit),
+      )
     );
   }
 
@@ -683,8 +642,7 @@ export class SinglePlayerModal extends BaseModal {
     );
   }
 
-  private handleWorldCoverMapSizeChange = (event: Event) => {
-    const nextSize = (event.target as HTMLSelectElement).value as GameMapSize;
+  private setWorldCoverMapSize = (nextSize: GameMapSize) => {
     if (
       nextSize !== GameMapSize.Compact &&
       nextSize !== GameMapSize.Normal &&
@@ -706,6 +664,60 @@ export class SinglePlayerModal extends BaseModal {
       );
     }
   };
+
+  private renderWorldCoverMapSizes(): TemplateResult {
+    const options = [
+      {
+        size: GameMapSize.Compact,
+        label: "single_modal.worldcover_map_size_compact",
+      },
+      {
+        size: GameMapSize.Normal,
+        label: "single_modal.worldcover_map_size_standard",
+      },
+      {
+        size: GameMapSize.Large,
+        label: "single_modal.worldcover_map_size_ultra",
+      },
+      {
+        size: GameMapSize.Maximum,
+        label: "single_modal.worldcover_map_size_maximum",
+      },
+    ] as const;
+
+    return html`
+      <div
+        class="mt-4 rounded-xl border border-malibu-blue/40 bg-malibu-blue/10 p-4"
+      >
+        <div
+          class="mb-3 text-xs font-bold uppercase tracking-wider text-white/80"
+        >
+          ${translateText("single_modal.worldcover_map_size")}
+        </div>
+        <div class="grid grid-cols-2 gap-3 lg:grid-cols-4">
+          ${options.map(({ size, label }) => {
+            const selected = this.worldCoverMapSize === size;
+            return html`
+              <button
+                class="rounded-lg border px-3 py-3 text-center text-xs font-bold transition-all active:scale-95 ${
+                  selected
+                    ? "border-malibu-blue/70 bg-malibu-blue/25 text-white shadow-[var(--shadow-malibu-blue)]"
+                    : "border-white/10 bg-white/5 text-white/60 hover:border-white/25 hover:bg-white/10"
+                }"
+                aria-pressed=${selected}
+                @click=${() => this.setWorldCoverMapSize(size)}
+              >
+                ${translateText(label)}
+              </button>
+            `;
+          })}
+        </div>
+        <p class="mt-3 text-[11px] leading-relaxed text-white/50">
+          ${translateText("single_modal.worldcover_map_size_hint")}
+        </p>
+      </div>
+    `;
+  }
 
   private handleConfigOptionToggleChanged = (e: Event) => {
     const customEvent = e as CustomEvent<{

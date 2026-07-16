@@ -1353,7 +1353,7 @@
     "worldcover_map_size": "WorldCover map size",
     "worldcover_map_size_compact": "Compact — 3,200 × 1,288",
     "worldcover_map_size_hint": "Larger maps preserve more geographic detail but take longer to load.",
-    "worldcover_map_size_maximum": "Maximum — 10,000 × 4,024 (local / external storage)",
+    "worldcover_map_size_maximum": "Maximum — 10,000 × 4,024",
     "worldcover_map_size_standard": "Standard — 6,400 × 2,576",
     "worldcover_map_size_ultra": "Ultra — 8,000 × 3,220"
   },

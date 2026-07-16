@@ -7,6 +7,8 @@ import {
   formatPercentage,
   renderNumber,
   renderTroops,
+  renderWorldCoverTroops,
+  renderWorldCoverValue,
   translateText,
 } from "../../Utils";
 import { GameView, PlayerView } from "../../view";
@@ -106,7 +108,7 @@ export class TeamStats extends LitElement implements Controller {
         const numTilesWithoutFallout =
           this.game.numLandTiles() - this.game.numTilesWithFallout();
         const totalScoreStr = weightedLand
-          ? renderNumber(totalScoreSort)
+          ? renderWorldCoverValue(totalScoreSort)
           : formatPercentage(totalScoreSort / numTilesWithoutFallout);
 
         return {
@@ -115,7 +117,9 @@ export class TeamStats extends LitElement implements Controller {
           totalScoreStr,
           totalScoreSort,
           totalGold: renderNumber(totalGold),
-          totalMaxTroops: renderTroops(totalMaxTroops),
+          totalMaxTroops: weightedLand
+            ? renderWorldCoverTroops(totalMaxTroops)
+            : renderTroops(totalMaxTroops),
           players: teamPlayers,
 
           totalLaunchers: renderNumber(totalLaunchers),

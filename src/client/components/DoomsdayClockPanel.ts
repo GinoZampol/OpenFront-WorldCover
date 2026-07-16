@@ -6,9 +6,9 @@ import {
   doomsdayClockSideRequiredTiles,
   doomsdayClockWaveState,
 } from "../../core/game/DoomsdayClock";
-import { GameMode, PlayerType, Team } from "../../core/game/Game";
+import { GameMapType, GameMode, PlayerType, Team } from "../../core/game/Game";
 import { themeProvider } from "../theme/ThemeProvider";
-import { renderTroops, translateText } from "../Utils";
+import { renderTroops, renderWorldCoverTroops, translateText } from "../Utils";
 import { GameView } from "../view";
 
 const doomsdayClockIcon = assetUrl("images/DoomsdayClockSkull.svg");
@@ -148,8 +148,12 @@ export class DoomsdayClockPanel extends LitElement {
         secondsUnder - sd.warnSeconds,
         sd,
       );
+      const troops = Math.max(0, Math.min(me.troops() - floor, chunk));
       status = translateText("doomsday_clock.collapsing", {
-        rate: renderTroops(Math.max(0, Math.min(me.troops() - floor, chunk))),
+        rate:
+          this.game.config().gameConfig().gameMap === GameMapType.WorldCover
+            ? renderWorldCoverTroops(troops)
+            : renderTroops(troops),
       });
       statusClass = "text-red-400 font-bold";
     } else if (live && flagged) {
@@ -229,26 +233,28 @@ export class DoomsdayClockPanel extends LitElement {
               pct: requiredPct.toFixed(1),
             })}
           </span>
-          ${live
-            ? myTeam !== null
-              ? html`<span style=${`color:${this.teamColor(myTeam)}`}>
-                  ${translateText("doomsday_clock.your_team", {
+          ${
+            live
+              ? myTeam !== null
+                ? html`<span style=${`color:${this.teamColor(myTeam)}`}>
+                    ${translateText("doomsday_clock.your_team", {
                     team: this.teamDisplayName(myTeam),
                     pct: yourPct.toFixed(1),
                   })}
-                </span>`
-              : html`<span
-                  class=${redAlert ? "text-red-300" : "text-green-300"}
-                >
-                  ${translateText("doomsday_clock.you", {
+                  </span>`
+                : html`<span
+                    class=${redAlert ? "text-red-300" : "text-green-300"}
+                  >
+                    ${translateText("doomsday_clock.you", {
                     pct: yourPct.toFixed(1),
                   })}
-                </span>`
-            : ""}
+                  </span>`
+              : ""
+          }
         </div>
-        ${detail
-          ? html`<div class="text-xs text-gray-400">${detail}</div>`
-          : ""}
+        ${
+          detail ? html`<div class="text-xs text-gray-400">${detail}</div>` : ""
+        }
       </div>
     `;
   }

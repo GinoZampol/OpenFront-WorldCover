@@ -1,7 +1,8 @@
-import { renderTroops } from "../../client/Utils";
+import { renderTroops, renderWorldCoverTroops } from "../../client/Utils";
 import {
   Execution,
   Game,
+  GameMapType,
   MessageType,
   Player,
   PlayerType,
@@ -28,6 +29,12 @@ export class TransportShipExecution implements Execution {
   private mg: Game;
   private target: Player | TerraNullius;
   private pathFinder: WaterPathFinder;
+
+  private formatTroops(troops: number): string {
+    return this.mg.config().gameConfig().gameMap === GameMapType.WorldCover
+      ? renderWorldCoverTroops(troops)
+      : renderTroops(troops);
+  }
 
   private static _staggerCounter = 0;
 
@@ -154,7 +161,7 @@ export class TransportShipExecution implements Execution {
       mg.displayIncomingUnit(
         this.boat.id(),
         // TODO TranslateText
-        `Naval invasion incoming from ${this.attacker.displayName()} (${renderTroops(this.boat.troops())})`,
+        `Naval invasion incoming from ${this.attacker.displayName()} (${this.formatTroops(this.boat.troops())})`,
         MessageType.NAVAL_INVASION_INBOUND,
         this.target.id(),
       );
@@ -253,7 +260,7 @@ export class TransportShipExecution implements Execution {
               MessageType.ATTACK_CANCELLED,
               this.attacker.id(),
               undefined,
-              { troops: renderTroops(deaths) },
+              { troops: this.formatTroops(deaths) },
             );
           }
           return;

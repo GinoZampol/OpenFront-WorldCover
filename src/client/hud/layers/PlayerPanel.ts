@@ -5,6 +5,7 @@ import { assetUrl } from "../../../core/AssetUrls";
 import { EventBus } from "../../../core/EventBus";
 import {
   AllPlayers,
+  GameMapType,
   GameType,
   PlayerActions,
   PlayerProfile,
@@ -35,6 +36,7 @@ import {
   renderDuration,
   renderNumber,
   renderTroops,
+  renderWorldCoverTroops,
   translateText,
 } from "../../Utils";
 import { GameView, PlayerView } from "../../view";
@@ -88,6 +90,11 @@ export class PlayerPanel extends LitElement implements Controller {
   }
 
   private ctModal: ChatModal;
+
+  private formatTroops = (troops: number): string =>
+    this.g.config().gameConfig().gameMap === GameMapType.WorldCover
+      ? renderWorldCoverTroops(troops)
+      : renderTroops(troops);
 
   createRenderRoot() {
     return this;
@@ -449,14 +456,16 @@ export class PlayerPanel extends LitElement implements Controller {
           <span class="tracking-tight"
             >${translateText("player_panel.traitor")}</span
           >
-          ${label
-            ? html`<span class=${dotCls}></span>
-                <span
-                  class="tabular-nums font-bold text-red-100 whitespace-nowrap text-sm"
-                >
-                  ${label}
-                </span>`
-            : ""}
+          ${
+            label
+              ? html`<span class=${dotCls}></span>
+                  <span
+                    class="tabular-nums font-bold text-red-100 whitespace-nowrap text-sm"
+                  >
+                    ${label}
+                  </span>`
+              : ""
+          }
         </span>
       </div>
     `;
@@ -520,16 +529,18 @@ export class PlayerPanel extends LitElement implements Controller {
 
     return html`
       <div class="flex items-center gap-2.5 flex-wrap">
-        ${country && typeof flagCode === "string"
-          ? html`<img
-              src=${assetUrl(`flags/${encodeURIComponent(flagCode)}.svg`)}
-              alt=${country?.name ?? "Flag"}
-              class="h-10 w-10 rounded-full object-cover"
-              @error=${(e: Event) => {
+        ${
+          country && typeof flagCode === "string"
+            ? html`<img
+                src=${assetUrl(`flags/${encodeURIComponent(flagCode)}.svg`)}
+                alt=${country?.name ?? "Flag"}
+                class="h-10 w-10 rounded-full object-cover"
+                @error=${(e: Event) => {
                 (e.target as HTMLImageElement).style.display = "none";
               }}
-            />`
-          : ""}
+              />`
+            : ""
+        }
 
         <div class="flex-1 min-w-0">
           <h2
@@ -539,19 +550,23 @@ export class PlayerPanel extends LitElement implements Controller {
             ${other.displayName()}
           </h2>
         </div>
-        ${chip
-          ? html`<span
-              class=${`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-xs font-semibold ${chip.classes}`}
-              role="status"
-              aria-label=${translateText(chip.labelKey)}
-              title=${translateText(chip.labelKey)}
-            >
-              <span aria-hidden="true" class="leading-none">${chip.icon}</span>
-              <span class="tracking-tight"
-                >${translateText(chip.labelKey)}</span
+        ${
+          chip
+            ? html`<span
+                class=${`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-xs font-semibold ${chip.classes}`}
+                role="status"
+                aria-label=${translateText(chip.labelKey)}
+                title=${translateText(chip.labelKey)}
               >
-            </span>`
-          : html``}
+                <span aria-hidden="true" class="leading-none"
+                  >${chip.icon}</span
+                >
+                <span class="tracking-tight"
+                  >${translateText(chip.labelKey)}</span
+                >
+              </span>`
+            : html``
+        }
       </div>
       ${this.renderTraitorBadge(other)}
       ${this.renderRelationPillIfNation(other, my)}
@@ -580,7 +595,7 @@ export class PlayerPanel extends LitElement implements Controller {
         >
           <span class="mr-0.5">🛡️</span>
           <span translate="no" class="tabular-nums w-[5ch] font-semibold">
-            ${renderTroops(other.troops() || 0)}
+            ${this.formatTroops(other.troops() || 0)}
           </span>
           <span class="text-zinc-200 whitespace-nowrap">
             ${translateText("player_panel.troops")}</span
@@ -602,9 +617,11 @@ export class PlayerPanel extends LitElement implements Controller {
             ${translateText("player_panel.flip_rocket_trajectory")}
           </span>
           <span class="text-xs text-zinc-300" translate="no">
-            ${this.uiState.rocketDirectionUp
-              ? translateText("player_panel.arc_up")
-              : translateText("player_panel.arc_down")}
+            ${
+              this.uiState.rocketDirectionUp
+                ? translateText("player_panel.arc_up")
+                : translateText("player_panel.arc_down")
+            }
           </span>
         </div>
         <span class="text-lg" aria-hidden="true">🔀</span>
@@ -638,13 +655,15 @@ export class PlayerPanel extends LitElement implements Controller {
         <div
           class="flex items-center justify-end gap-2 text-[14px] font-semibold"
         >
-          ${other.hasEmbargoAgainst(my)
-            ? html`<span class="text-amber-400"
-                >${translateText("player_panel.stopped")}</span
-              >`
-            : html`<span class="text-blue-400"
-                >${translateText("player_panel.active")}</span
-              >`}
+          ${
+            other.hasEmbargoAgainst(my)
+              ? html`<span class="text-amber-400"
+                  >${translateText("player_panel.stopped")}</span
+                >`
+              : html`<span class="text-blue-400"
+                  >${translateText("player_panel.active")}</span
+                >`
+          }
         </div>
       </div>
     `;
@@ -687,22 +706,24 @@ export class PlayerPanel extends LitElement implements Controller {
             aria-labelledby="alliances-title"
             translate="no"
           >
-            ${alliesSorted.length === 0
-              ? html`<li class="text-zinc-400 text-[14px] px-1">
-                  ${translateText("common.none")}
-                </li>`
-              : alliesSorted.map(
-                  (p) =>
-                    html`<li
-                      class="max-w-full inline-flex items-center gap-1.5
+            ${
+              alliesSorted.length === 0
+                ? html`<li class="text-zinc-400 text-[14px] px-1">
+                    ${translateText("common.none")}
+                  </li>`
+                : alliesSorted.map(
+                    (p) =>
+                      html`<li
+                        class="max-w-full inline-flex items-center gap-1.5
                              rounded-md border border-white/10 bg-white/5
                              px-2.5 py-1 text-[14px] text-zinc-100
                              hover:bg-white/8 active:scale-[0.99] transition"
-                      title=${p.displayName()}
-                    >
-                      <span class="truncate">${p.displayName()}</span>
-                    </li>`,
-                )}
+                        title=${p.displayName()}
+                      >
+                        <span class="truncate">${p.displayName()}</span>
+                      </li>`,
+                  )
+            }
           </ul>
         </div>
       </div>
@@ -752,100 +773,118 @@ export class PlayerPanel extends LitElement implements Controller {
             title: translateText("player_panel.chat"),
             label: translateText("player_panel.chat"),
           })}
-          ${canSendEmoji
-            ? actionButton({
-                onClick: (e: MouseEvent) => this.handleEmojiClick(e, my, other),
-                icon: emojiIcon,
-                iconAlt: "Emoji",
-                title: translateText("player_panel.emotes"),
-                label: translateText("player_panel.emotes"),
-                type: "normal",
-              })
-            : ""}
-          ${canTarget
-            ? actionButton({
-                onClick: (e: MouseEvent) => this.handleTargetClick(e, other),
-                icon: targetIcon,
-                iconAlt: "Target",
-                title: translateText("player_panel.target"),
-                label: translateText("player_panel.target"),
-                type: "normal",
-              })
-            : ""}
-          ${canDonateTroops
-            ? actionButton({
-                onClick: (e: MouseEvent) =>
-                  this.handleDonateTroopClick(e, my, other),
-                icon: donateTroopIcon,
-                iconAlt: "Troops",
-                title: translateText("player_panel.send_troops"),
-                label: translateText("player_panel.troops"),
-                type: "normal",
-              })
-            : ""}
-          ${canDonateGold
-            ? actionButton({
-                onClick: (e: MouseEvent) =>
-                  this.handleDonateGoldClick(e, my, other),
-                icon: donateGoldIcon,
-                iconAlt: "Gold",
-                title: translateText("player_panel.send_gold"),
-                label: translateText("player_panel.gold"),
-                type: "normal",
-              })
-            : ""}
+          ${
+            canSendEmoji
+              ? actionButton({
+                  onClick: (e: MouseEvent) =>
+                    this.handleEmojiClick(e, my, other),
+                  icon: emojiIcon,
+                  iconAlt: "Emoji",
+                  title: translateText("player_panel.emotes"),
+                  label: translateText("player_panel.emotes"),
+                  type: "normal",
+                })
+              : ""
+          }
+          ${
+            canTarget
+              ? actionButton({
+                  onClick: (e: MouseEvent) => this.handleTargetClick(e, other),
+                  icon: targetIcon,
+                  iconAlt: "Target",
+                  title: translateText("player_panel.target"),
+                  label: translateText("player_panel.target"),
+                  type: "normal",
+                })
+              : ""
+          }
+          ${
+            canDonateTroops
+              ? actionButton({
+                  onClick: (e: MouseEvent) =>
+                    this.handleDonateTroopClick(e, my, other),
+                  icon: donateTroopIcon,
+                  iconAlt: "Troops",
+                  title: translateText("player_panel.send_troops"),
+                  label: translateText("player_panel.troops"),
+                  type: "normal",
+                })
+              : ""
+          }
+          ${
+            canDonateGold
+              ? actionButton({
+                  onClick: (e: MouseEvent) =>
+                    this.handleDonateGoldClick(e, my, other),
+                  icon: donateGoldIcon,
+                  iconAlt: "Gold",
+                  title: translateText("player_panel.send_gold"),
+                  label: translateText("player_panel.gold"),
+                  type: "normal",
+                })
+              : ""
+          }
         </div>
         <ui-divider></ui-divider>
-        ${other === my
-          ? html``
-          : html`
-              <div class="grid auto-cols-fr grid-flow-col gap-1">
-                ${canEmbargo
-                  ? actionButton({
-                      onClick: (e: MouseEvent) =>
-                        this.handleEmbargoClick(e, my, other),
-                      icon: stopTradingIcon,
-                      iconAlt: "Stop Trading",
-                      title: translateText("player_panel.stop_trade"),
-                      label: translateText("player_panel.stop_trade"),
-                      type: "yellow",
-                    })
-                  : actionButton({
-                      onClick: (e: MouseEvent) =>
-                        this.handleStopEmbargoClick(e, my, other),
-                      icon: startTradingIcon,
-                      iconAlt: "Start Trading",
-                      title: translateText("player_panel.start_trade"),
-                      label: translateText("player_panel.start_trade"),
-                      type: "green",
-                    })}
-                ${canBreakAlliance
-                  ? actionButton({
-                      onClick: (e: MouseEvent) =>
-                        this.handleBreakAllianceClick(e, my, other),
-                      icon: breakAllianceIcon,
-                      iconAlt: "Break Alliance",
-                      title: translateText("player_panel.break_alliance"),
-                      label: translateText("player_panel.break_alliance"),
-                      type: "red",
-                    })
-                  : ""}
-                ${canSendAllianceRequest
-                  ? actionButton({
-                      onClick: (e: MouseEvent) =>
-                        this.handleAllianceClick(e, my, other),
-                      icon: allianceIcon,
-                      iconAlt: "Alliance",
-                      title: translateText("player_panel.send_alliance"),
-                      label: translateText("player_panel.send_alliance"),
-                      type: "indigo",
-                    })
-                  : ""}
-              </div>
-            `}
-        ${other === my
-          ? html`<div class="grid auto-cols-fr grid-flow-col gap-1">
-              ${actionButton({
+        ${
+          other === my
+            ? html``
+            : html`
+                <div class="grid auto-cols-fr grid-flow-col gap-1">
+                  ${
+                  canEmbargo
+                    ? actionButton({
+                        onClick: (e: MouseEvent) =>
+                          this.handleEmbargoClick(e, my, other),
+                        icon: stopTradingIcon,
+                        iconAlt: "Stop Trading",
+                        title: translateText("player_panel.stop_trade"),
+                        label: translateText("player_panel.stop_trade"),
+                        type: "yellow",
+                      })
+                    : actionButton({
+                        onClick: (e: MouseEvent) =>
+                          this.handleStopEmbargoClick(e, my, other),
+                        icon: startTradingIcon,
+                        iconAlt: "Start Trading",
+                        title: translateText("player_panel.start_trade"),
+                        label: translateText("player_panel.start_trade"),
+                        type: "green",
+                      })
+                }
+                  ${
+                  canBreakAlliance
+                    ? actionButton({
+                        onClick: (e: MouseEvent) =>
+                          this.handleBreakAllianceClick(e, my, other),
+                        icon: breakAllianceIcon,
+                        iconAlt: "Break Alliance",
+                        title: translateText("player_panel.break_alliance"),
+                        label: translateText("player_panel.break_alliance"),
+                        type: "red",
+                      })
+                    : ""
+                }
+                  ${
+                  canSendAllianceRequest
+                    ? actionButton({
+                        onClick: (e: MouseEvent) =>
+                          this.handleAllianceClick(e, my, other),
+                        icon: allianceIcon,
+                        iconAlt: "Alliance",
+                        title: translateText("player_panel.send_alliance"),
+                        label: translateText("player_panel.send_alliance"),
+                        type: "indigo",
+                      })
+                    : ""
+                }
+                </div>
+              `
+        }
+        ${
+          other === my
+            ? html`<div class="grid auto-cols-fr grid-flow-col gap-1">
+                ${actionButton({
                 onClick: (e: MouseEvent) => this.onStopTradingAllClick(e),
                 icon: stopTradingIcon,
                 iconAlt: "Stop Trading With All",
@@ -858,7 +897,7 @@ export class PlayerPanel extends LitElement implements Controller {
                 type: "yellow",
                 disabled: !this.actions?.canEmbargoAll,
               })}
-              ${actionButton({
+                ${actionButton({
                 onClick: (e: MouseEvent) => this.onStartTradingAllClick(e),
                 icon: startTradingIcon,
                 iconAlt: "Start Trading With All",
@@ -871,8 +910,9 @@ export class PlayerPanel extends LitElement implements Controller {
                 type: "green",
                 disabled: !this.actions?.canEmbargoAll,
               })}
-            </div>`
-          : ""}
+              </div>`
+            : ""
+        }
         ${this.renderModeration(my, other, this.isAdminRole)}
       </div>
     `;
@@ -963,43 +1003,51 @@ export class PlayerPanel extends LitElement implements Controller {
                     <!-- Identity (flag, name, type, traitor, relation) -->
                     <div class="mb-1">${this.renderIdentityRow(other, my)}</div>
 
-                    ${this.sendTarget
-                      ? html`
-                          <send-resource-modal
-                            .open=${this.sendMode !== "none"}
-                            .mode=${this.sendMode}
-                            .total=${this.sendMode === "troops"
-                              ? myTroopsNum
-                              : myGoldNum}
-                            .uiState=${this.uiState}
-                            .myPlayer=${my}
-                            .target=${this.sendTarget}
-                            .gameView=${this.g}
-                            .eventBus=${this.eventBus}
-                            .format=${this.sendMode === "troops"
-                              ? renderTroops
-                              : renderNumber}
-                            @confirm=${this.confirmSend}
-                            @close=${this.closeSend}
-                          ></send-resource-modal>
-                        `
-                      : ""}
-                    ${this.moderationTarget
-                      ? html`
-                          <player-moderation-modal
-                            .open=${true}
-                            .myPlayer=${my}
-                            .target=${this.moderationTarget}
-                            .eventBus=${this.eventBus}
-                            .isAdmin=${this.isAdminRole}
-                            .alreadyKicked=${this.kickedPlayerIDs.has(
+                    ${
+                      this.sendTarget
+                        ? html`
+                            <send-resource-modal
+                              .open=${this.sendMode !== "none"}
+                              .mode=${this.sendMode}
+                              .total=${
+                              this.sendMode === "troops"
+                                ? myTroopsNum
+                                : myGoldNum
+                            }
+                              .uiState=${this.uiState}
+                              .myPlayer=${my}
+                              .target=${this.sendTarget}
+                              .gameView=${this.g}
+                              .eventBus=${this.eventBus}
+                              .format=${
+                              this.sendMode === "troops"
+                                ? this.formatTroops
+                                : renderNumber
+                            }
+                              @confirm=${this.confirmSend}
+                              @close=${this.closeSend}
+                            ></send-resource-modal>
+                          `
+                        : ""
+                    }
+                    ${
+                      this.moderationTarget
+                        ? html`
+                            <player-moderation-modal
+                              .open=${true}
+                              .myPlayer=${my}
+                              .target=${this.moderationTarget}
+                              .eventBus=${this.eventBus}
+                              .isAdmin=${this.isAdminRole}
+                              .alreadyKicked=${this.kickedPlayerIDs.has(
                               String(this.moderationTarget.id()),
                             )}
-                            @close=${this.closeModeration}
-                            @kicked=${this.handleModerationKicked}
-                          ></player-moderation-modal>
-                        `
-                      : ""}
+                              @close=${this.closeModeration}
+                              @kicked=${this.handleModerationKicked}
+                            ></player-moderation-modal>
+                          `
+                        : ""
+                    }
 
                     <ui-divider></ui-divider>
 

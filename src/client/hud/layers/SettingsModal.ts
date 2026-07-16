@@ -1,11 +1,11 @@
 import { html, LitElement } from "lit";
 import { customElement, property, query, state } from "lit/decorators.js";
 import { crazyGamesSDK } from "src/client/CrazyGamesSDK";
-import { appUrl } from "../../AppUrl";
 import { PauseGameIntentEvent } from "src/client/Transport";
 import { assetUrl } from "../../../core/AssetUrls";
 import { EventBus } from "../../../core/EventBus";
 import { UserSettings } from "../../../core/game/UserSettings";
+import { appUrl } from "../../AppUrl";
 import { Controller } from "../../Controller";
 import {
   AlternateViewEvent,
@@ -168,11 +168,6 @@ export class SettingsModal extends LitElement implements Controller {
 
   private onTogglePerformanceOverlayButtonClick() {
     this.userSettings.togglePerformanceOverlay();
-    this.requestUpdate();
-  }
-
-  private onToggleLandValueStatsButtonClick() {
-    this.userSettings.toggleLandValueStats();
     this.requestUpdate();
   }
 
@@ -563,32 +558,6 @@ export class SettingsModal extends LitElement implements Controller {
               >
                 ${translateText("user_setting.development_only")}
               </div>
-
-              <button
-                class="flex gap-3 items-center w-full text-left p-3 hover:bg-slate-700 rounded-sm text-white transition-colors"
-                @click="${this.onToggleLandValueStatsButtonClick}"
-              >
-                <img
-                  src=${settingsIcon}
-                  alt="landValueStatsIcon"
-                  width="20"
-                  height="20"
-                />
-                <div class="flex-1">
-                  <div class="font-medium">Stats for nerds</div>
-                  <div class="text-sm text-slate-400">
-                    Show each player's land-value breakdown when hovering over
-                    their territory.
-                  </div>
-                </div>
-                <div class="text-sm text-slate-400">
-                  ${
-                    this.userSettings.landValueStats()
-                      ? translateText("user_setting.on")
-                      : translateText("user_setting.off")
-                  }
-                </div>
-              </button>
 
               <button
                 class="flex gap-3 items-center w-full text-left p-3 hover:bg-slate-700 rounded-sm text-white transition-colors"

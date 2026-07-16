@@ -1,9 +1,10 @@
-import { renderTroops } from "../../client/Utils";
+import { renderTroops, renderWorldCoverTroops } from "../../client/Utils";
 import {
   Attack,
   Difficulty,
   Execution,
   Game,
+  GameMapType,
   MessageType,
   Player,
   PlayerID,
@@ -205,7 +206,12 @@ export class AttackExecution implements Execution {
         MessageType.ATTACK_CANCELLED,
         this._owner.id(),
         undefined,
-        { troops: renderTroops(deaths) },
+        {
+          troops:
+            this.mg.config().gameConfig().gameMap === GameMapType.WorldCover
+              ? renderWorldCoverTroops(deaths)
+              : renderTroops(deaths),
+        },
       );
     }
     if (this.removeTroops === false && this.sourceTile === null) {

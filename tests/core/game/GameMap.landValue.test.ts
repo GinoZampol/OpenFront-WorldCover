@@ -29,9 +29,9 @@ describe("GameMap land value", () => {
     const map = new GameMapImpl(9, 1, terrain, 8, "worldcover");
 
     expect(Array.from(terrain, (_, tile) => map.landValue(tile))).toEqual([
-      150, 5, 0.2, 0, 0, 0.1, 0, 0, 0,
+      150, 5, 0.2, 0, 0, 0.2, 0, 0, 0,
     ]);
-    expect(map.totalLandValue()).toBe(155.3);
+    expect(map.totalLandValue()).toBe(155.4);
     expect(map.terrainType(0)).toBe(TerrainType.Plains);
     expect(map.terrainType(5)).toBe(TerrainType.Highland);
     expect(map.terrainType(6)).toBe(TerrainType.Mountain);

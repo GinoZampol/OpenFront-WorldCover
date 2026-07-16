@@ -37,21 +37,13 @@ class TradeStationStopHandler implements TrainStopHandler {
   }
 }
 
-class FactoryStopHandler implements TrainStopHandler {
-  onStop(
-    mg: Game,
-    station: TrainStation,
-    trainExecution: TrainExecution,
-  ): void {}
-}
-
 export function createTrainStopHandlers(
   random: PseudoRandom,
 ): Partial<Record<UnitType, TrainStopHandler>> {
   return {
     [UnitType.City]: new TradeStationStopHandler(),
     [UnitType.Port]: new TradeStationStopHandler(),
-    [UnitType.Factory]: new FactoryStopHandler(),
+    [UnitType.Factory]: new TradeStationStopHandler(),
   };
 }
 
@@ -164,7 +156,11 @@ export class Cluster {
 
   private isTradeStation(station: TrainStation): boolean {
     const type = station.unit.type();
-    return type === UnitType.City || type === UnitType.Port;
+    return (
+      type === UnitType.City ||
+      type === UnitType.Port ||
+      type === UnitType.Factory
+    );
   }
 
   has(station: TrainStation) {

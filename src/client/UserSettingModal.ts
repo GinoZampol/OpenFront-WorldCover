@@ -330,10 +330,6 @@ export class UserSettingModal extends BaseModal {
     this.userSettings.togglePerformanceOverlay();
   }
 
-  private toggleLandValueStats() {
-    this.userSettings.toggleLandValueStats();
-  }
-
   protected modalConfig() {
     return {
       tabs: [
@@ -859,15 +855,6 @@ export class UserSettingModal extends BaseModal {
 
       <!-- 📱 Performance Overlay -->
       <setting-toggle
-        label="Stats for nerds"
-        description="Show each player's land-value breakdown when hovering over their territory."
-        id="land-value-stats-toggle"
-        .checked=${this.userSettings.landValueStats()}
-        @change=${this.toggleLandValueStats}
-      ></setting-toggle>
-
-      <!-- 📱 Performance Overlay -->
-      <setting-toggle
         label="${translateText("user_setting.performance_overlay_label")}"
         description="${translateText("user_setting.performance_overlay_desc")}"
         id="performance-overlay-toggle"
@@ -905,42 +892,42 @@ export class UserSettingModal extends BaseModal {
           ? html`
               <setting-slider
                 label="${translateText(
-                "user_setting.easter_writing_speed_label",
-              )}"
+                  "user_setting.easter_writing_speed_label",
+                )}"
                 description="${translateText(
-                "user_setting.easter_writing_speed_desc",
-              )}"
+                  "user_setting.easter_writing_speed_desc",
+                )}"
                 min="0"
                 max="100"
                 value="40"
                 easter="true"
                 @change=${(e: CustomEvent) => {
-                const value = e.detail?.value;
-                if (value !== undefined) {
-                  console.log("Changed:", value);
-                } else {
-                  console.warn("Slider event missing detail.value", e);
-                }
-              }}
+                  const value = e.detail?.value;
+                  if (value !== undefined) {
+                    console.log("Changed:", value);
+                  } else {
+                    console.warn("Slider event missing detail.value", e);
+                  }
+                }}
               ></setting-slider>
 
               <setting-number
                 label="${translateText("user_setting.easter_bug_count_label")}"
                 description="${translateText(
-                "user_setting.easter_bug_count_desc",
-              )}"
+                  "user_setting.easter_bug_count_desc",
+                )}"
                 value="100"
                 min="0"
                 max="1000"
                 easter="true"
                 @change=${(e: CustomEvent) => {
-                const value = e.detail?.value;
-                if (value !== undefined) {
-                  console.log("Changed:", value);
-                } else {
-                  console.warn("Slider event missing detail.value", e);
-                }
-              }}
+                  const value = e.detail?.value;
+                  if (value !== undefined) {
+                    console.log("Changed:", value);
+                  } else {
+                    console.warn("Slider event missing detail.value", e);
+                  }
+                }}
               ></setting-number>
             `
           : null

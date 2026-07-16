@@ -393,9 +393,9 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
                       <span class="text-xs font-normal text-gray-400"
                         >[<span
                           style="color: ${themeProvider
-                          .current()
-                          .teamColor(player.team()!)
-                          .toHex()}"
+                            .current()
+                            .teamColor(player.team()!)
+                            .toHex()}"
                           >${playerTeam}</span
                         >]</span
                       >
@@ -436,14 +436,21 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
   private renderLandValueStats(player: PlayerView) {
     const expanded = this.userSettings.landValueStatsExpanded();
     const breakdown = this.game.worldCoverLandValueBreakdown(player);
+    const landValue = Math.max(player.landValue(), 0);
+    const contributionPercent = (value: number) =>
+      landValue === 0 ? "0.0%" : `${((value / landValue) * 100).toFixed(1)}%`;
+    const valuedTerrain = WORLD_COVER_CLASSES.map((terrain, index) => ({
+      terrain,
+      index,
+    })).filter(({ terrain }) => terrain.value > 0);
 
     return html`
       <div class="border-t border-slate-600/80 bg-slate-900/45 px-2 py-1.5">
         <div class="flex items-center justify-between gap-3 text-xs">
           <div class="font-bold text-slate-100">
-            Stats for nerds
+            Terrain contribution
             <span class="ml-1 font-normal text-slate-300">
-              Land value: ${renderWorldCoverValue(player.landValue())}
+              Total: ${renderWorldCoverValue(player.landValue())}
             </span>
           </div>
           <button
@@ -470,14 +477,19 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
                       class="h-2.5 w-2.5 rounded-sm border border-white/30 bg-slate-500"
                     ></span>
                     <span>Starting base</span>
-                    <strong class="ml-auto text-white"
+                    <span class="ml-auto text-slate-400"
+                      >${contributionPercent(
+                        WORLD_COVER_STARTING_LAND_VALUE,
+                      )}</span
+                    >
+                    <strong class="text-white"
                       >${renderWorldCoverValue(
                         WORLD_COVER_STARTING_LAND_VALUE,
                       )}</strong
                     >
                   </div>
-                  ${WORLD_COVER_CLASSES.map(
-                    (terrain, index) => html`
+                  ${valuedTerrain.map(
+                    ({ terrain, index }) => html`
                       <div
                         class="flex min-w-0 items-center gap-1.5 text-slate-300"
                       >
@@ -486,12 +498,32 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
                           style=${`background: rgb(${terrain.color.join(",")})`}
                         ></span>
                         <span class="truncate">${terrain.name}</span>
-                        <strong class="ml-auto text-white"
+                        <span class="ml-auto whitespace-nowrap text-slate-400"
+                          >${terrain.value}/tile ·
+                          ${contributionPercent(breakdown[index] ?? 0)}</span
+                        >
+                        <strong class="whitespace-nowrap text-white"
                           >${renderWorldCoverValue(breakdown[index] ?? 0)}</strong
                         >
                       </div>
                     `,
                   )}
+                  <div
+                    class="col-span-2 flex min-w-0 items-center gap-1.5 text-slate-300"
+                  >
+                    <span
+                      class="h-2.5 w-2.5 shrink-0 rounded-sm border border-white/30 bg-slate-500"
+                    ></span>
+                    <span class="truncate"
+                      >Shrubland, wetland, bare & snow</span
+                    >
+                    <span class="ml-auto whitespace-nowrap text-slate-400"
+                      >0/tile · 0.0%</span
+                    >
+                    <strong class="whitespace-nowrap text-white"
+                      >${renderWorldCoverValue(0)}</strong
+                    >
+                  </div>
                 </div>
               `
             : null
@@ -577,7 +609,13 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
             unit.type() === UnitType.TransportShip
               ? html`
                   <div class="text-sm">
-                    Troops: ${renderTroops(unit.troops())}
+                    Troops:
+                    ${
+                      this.game.config().gameConfig().gameMap ===
+                      GameMapType.WorldCover
+                        ? renderWorldCoverTroops(unit.troops())
+                        : renderTroops(unit.troops())
+                    }
                   </div>
                 `
               : ""
