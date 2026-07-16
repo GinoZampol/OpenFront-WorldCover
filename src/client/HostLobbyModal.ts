@@ -1,6 +1,7 @@
 import { html, nothing } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { ClientEnv } from "src/client/ClientEnv";
+import { appUrl } from "./AppUrl";
 import {
   calculateServerTimeOffset,
   getSecondsUntilServerTimestamp,
@@ -187,7 +188,11 @@ export class HostLobbyModal extends BaseModal {
       return;
     }
     const lobbyIdHidden = !this.userSettings.lobbyIdVisibility();
-    history.replaceState(null, "", lobbyIdHidden ? "/streamer-mode" : lobbyUrl);
+    history.replaceState(
+      null,
+      "",
+      lobbyIdHidden ? appUrl("streamer-mode") : lobbyUrl,
+    );
   }
 
   private startLobbyUpdates() {
@@ -637,7 +642,9 @@ export class HostLobbyModal extends BaseModal {
               @cancel=${() => (this.showSubscriptionRequired = false)}
               @confirm=${() => {
                 this.showSubscriptionRequired = false;
-                window.location.href = "/#modal=store&tab=subscriptions";
+                window.location.href = appUrl(
+                  "#modal=store&tab=subscriptions",
+                );
               }}
             ></confirm-dialog>`
           : ""}

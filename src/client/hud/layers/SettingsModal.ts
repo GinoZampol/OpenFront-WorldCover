@@ -1,6 +1,7 @@
 import { html, LitElement } from "lit";
 import { customElement, property, query, state } from "lit/decorators.js";
 import { crazyGamesSDK } from "src/client/CrazyGamesSDK";
+import { appUrl } from "../../AppUrl";
 import { PauseGameIntentEvent } from "src/client/Transport";
 import { assetUrl } from "../../../core/AssetUrls";
 import { EventBus } from "../../../core/EventBus";
@@ -193,7 +194,7 @@ export class SettingsModal extends LitElement implements Controller {
 
   private onExitButtonClick() {
     // redirect to the home page
-    window.location.href = "/";
+    window.location.href = appUrl();
   }
 
   private onVolumeChange(event: Event) {

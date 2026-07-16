@@ -10,6 +10,7 @@ import { EventBus } from "../../../core/EventBus";
 import { RankedType } from "../../../core/game/Game";
 import { GameUpdateType } from "../../../core/game/GameUpdates";
 import { getUserMe } from "../../Api";
+import { appUrl } from "../../AppUrl";
 import "../../components/CosmeticButton";
 import { Controller } from "../../Controller";
 import {
@@ -245,16 +246,17 @@ export class WinModal extends LitElement implements Controller {
 
   private _handleExit() {
     this.hide();
-    window.location.href = "/";
+    window.location.href = appUrl();
   }
 
   private _handleRequeue() {
     this.hide();
     // Navigate to homepage and open matchmaking modal for the same mode
-    const requeue =
+    const requeue = appUrl(
       this.game.config().gameConfig().rankedType === RankedType.TwoVTwo
-        ? "/?requeue=2v2"
-        : "/?requeue";
+        ? "?requeue=2v2"
+        : "?requeue",
+    );
     window.location.href = requeue;
   }
 

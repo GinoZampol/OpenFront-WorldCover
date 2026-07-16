@@ -15,6 +15,7 @@ import { GameType } from "../core/game/Game";
 import { UserSettings } from "../core/game/UserSettings";
 import "./AccountModal";
 import { getUserMe, invalidateUserMe } from "./Api";
+import { appUrl } from "./AppUrl";
 import { reauthAfterCrazyGamesChange, userAuth } from "./Auth";
 import "./ClanModal";
 import { joinLobby, type JoinLobbyResult } from "./ClientGameRunner";
@@ -488,7 +489,7 @@ class Client {
         const rewards = userMeResponse.player.rewards ?? [];
         if (
           rewards.length > 0 &&
-          window.location.pathname === "/" &&
+          window.location.pathname === appUrl() &&
           window.location.hash === ""
         ) {
           this.rewardsModal?.openWithRewards(rewards);
@@ -570,7 +571,7 @@ class Client {
     const leaveGame = () => {
       crazyGamesSDK.gameplayStop().then(() => {
         // redirect to the home page
-        window.location.href = "/";
+        window.location.href = appUrl();
       });
     };
 
@@ -798,7 +799,7 @@ class Client {
       }
     }
     if (decodedHash.startsWith("#refresh")) {
-      window.location.href = "/";
+      window.location.href = appUrl();
     }
 
     const requeueMode = this.consumeRequeueUrl();
@@ -945,15 +946,17 @@ class Client {
 
       // Ensure there's a homepage entry in history before adding the lobby entry
       if (window.location.hash === "" || window.location.hash === "#") {
-        history.replaceState(null, "", window.location.origin + "#refresh");
+        history.replaceState(null, "", appUrl("#refresh"));
       }
       const lobbyIdHidden = !this.userSettings.lobbyIdVisibility();
       history.pushState(
         null,
         "",
         lobbyIdHidden
-          ? "/streamer-mode"
-          : `/${ClientEnv.workerPath(lobby.gameID)}/game/${lobby.gameID}?live`,
+          ? appUrl("streamer-mode")
+          : appUrl(
+              `${ClientEnv.workerPath(lobby.gameID)}/game/${lobby.gameID}?live`,
+            ),
       );
 
       // Store current URL for popstate confirmation
@@ -964,8 +967,8 @@ class Client {
   private updateJoinUrlForShare(lobbyId: string) {
     const lobbyIdHidden = !this.userSettings.lobbyIdVisibility();
     const targetUrl = lobbyIdHidden
-      ? "/streamer-mode"
-      : `/${ClientEnv.workerPath(lobbyId)}/game/${lobbyId}`;
+      ? appUrl("streamer-mode")
+      : appUrl(`${ClientEnv.workerPath(lobbyId)}/game/${lobbyId}`);
     const currentUrl = window.location.pathname;
 
     if (currentUrl !== targetUrl) {

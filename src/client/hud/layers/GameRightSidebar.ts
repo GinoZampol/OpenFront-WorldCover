@@ -4,6 +4,7 @@ import { assetUrl } from "../../../core/AssetUrls";
 import { EventBus } from "../../../core/EventBus";
 import { GameType } from "../../../core/game/Game";
 import { createNextLobby } from "../../Api";
+import { appUrl } from "../../AppUrl";
 import { ClientEnv } from "../../ClientEnv";
 import "../../components/DoomsdayClockPanel";
 import { Controller } from "../../Controller";
@@ -241,7 +242,7 @@ export class GameRightSidebar extends LitElement implements Controller {
     }
     await crazyGamesSDK.gameplayStop();
     // redirect to the home page
-    window.location.href = "/";
+    window.location.href = appUrl();
   }
 
   private onSettingsButtonClick() {
