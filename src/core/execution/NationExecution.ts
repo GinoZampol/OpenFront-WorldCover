@@ -2,6 +2,7 @@ import {
   Difficulty,
   Execution,
   Game,
+  GameMapType,
   GameMode,
   Nation,
   Player,
@@ -106,6 +107,11 @@ export class NationExecution implements Execution {
 
     if (this.mg.inSpawnPhase()) {
       if (this.player.hasSpawned()) {
+        // WorldCover nations represent real countries at their capitals. Keep
+        // them fixed instead of using the normal pre-game hopping animation.
+        if (this.mg.config().gameConfig().gameMap === GameMapType.WorldCover) {
+          return;
+        }
         // Already on the map — periodically re-spawn so the nation
         // visibly hops to different locations during the spawn phase.
         if (ticks % this.attackRate !== this.attackTick) {
@@ -262,6 +268,20 @@ export class NationExecution implements Execution {
 
   private randomSpawnLand(): TileRef | null {
     if (this.nation.spawnCell === undefined) throw new Error("not initialized");
+
+    if (this.mg.config().gameConfig().gameMap === GameMapType.WorldCover) {
+      const cell = this.nation.spawnCell;
+      if (this.mg.isValidCoord(cell.x, cell.y)) {
+        const capital = this.mg.ref(cell.x, cell.y);
+        if (
+          this.mg.isLand(capital) &&
+          !this.mg.hasOwner(capital) &&
+          !this.mg.isImpassable(capital)
+        ) {
+          return capital;
+        }
+      }
+    }
 
     const delta = 25;
     let tries = 0;

@@ -1,6 +1,12 @@
 import { NationExecution } from "../../src/core/execution/NationExecution";
 import { SpawnExecution } from "../../src/core/execution/SpawnExecution";
-import { Cell, Nation, PlayerInfo, PlayerType } from "../../src/core/game/Game";
+import {
+  Cell,
+  GameMapType,
+  Nation,
+  PlayerInfo,
+  PlayerType,
+} from "../../src/core/game/Game";
 import { GameConfig, GameID } from "../../src/core/Schemas";
 import { setup } from "../util/Setup";
 import { executeTicks } from "../util/utils";
@@ -10,10 +16,11 @@ const gameID: GameID = "test_game_id";
 async function createTestGame(
   randomSpawn: boolean,
   nationCells: { x: number; y: number }[],
+  gameMap: GameMapType = GameMapType.Asia,
 ) {
   const game = await setup(
     "plains",
-    { randomSpawn } as Partial<GameConfig>,
+    { randomSpawn, gameMap } as Partial<GameConfig>,
     [],
     undefined,
     undefined,
@@ -101,5 +108,37 @@ describe("Nation spawn ordering with random spawn", () => {
 
     expect(game.player(nations[0].info.id).hasSpawned()).toBe(true);
     expect(game.player(nations[0].info.id).isAlive()).toBe(true);
+  });
+
+  test("WorldCover nations stay on adjacent capital pixels", async () => {
+    const cells = [
+      { x: 50, y: 50 },
+      { x: 51, y: 50 },
+    ];
+    const { game, nations } = await createTestGame(
+      false,
+      cells,
+      GameMapType.WorldCover,
+    );
+
+    for (const { nation } of nations) {
+      game.addExecution(new NationExecution(gameID, nation));
+    }
+    executeTicks(game, 4);
+
+    for (let i = 0; i < nations.length; i++) {
+      const player = game.player(nations[i].info.id);
+      expect(player.spawnTile()).toBe(game.ref(cells[i].x, cells[i].y));
+      expect(player.numTilesOwned()).toBe(1);
+    }
+
+    // Standard maps move nations around during the spawn phase. WorldCover
+    // keeps the configured capital fixed until the human starts the game.
+    executeTicks(game, 120);
+    for (let i = 0; i < nations.length; i++) {
+      expect(game.player(nations[i].info.id).spawnTile()).toBe(
+        game.ref(cells[i].x, cells[i].y),
+      );
+    }
   });
 });

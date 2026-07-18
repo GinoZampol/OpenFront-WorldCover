@@ -20,6 +20,11 @@ describe("WorldCover map assets", () => {
     );
 
     expect(manifest.land_value_mode).toBe("worldcover");
+    expect(manifest.nations).toHaveLength(167);
+    expect(
+      new Set(manifest.nations.map((nation) => nation.coordinates?.join(",")))
+        .size,
+    ).toBe(manifest.nations.length);
     expect(manifest.map.width).toBe(6400);
     expect(manifest.map.height).toBe(2576);
     expect(data.length).toBe(manifest.map.width * manifest.map.height);
@@ -42,6 +47,49 @@ describe("WorldCover map assets", () => {
       const [x, y] = nation.coordinates!;
       expect(map.isLand(map.ref(x, y)), nation.name).toBe(true);
     }
+
+    const compactData = fs.readFileSync(path.join(root, "map4x.bin"));
+    const compactMap = await genTerrainFromBin(
+      manifest.map4x,
+      compactData,
+      manifest.land_value_mode,
+    );
+    const compactScale = manifest.map4x.width / manifest.map.width;
+    for (const nation of manifest.nations) {
+      const [x, y] = nation.coordinates!;
+      expect(
+        compactMap.isLand(
+          compactMap.ref(
+            Math.floor(x * compactScale),
+            Math.floor(y * compactScale),
+          ),
+        ),
+        nation.name,
+      ).toBe(true);
+    }
+  });
+
+  it("keeps capital placement within the configured accuracy limit", () => {
+    const reportPath = path.join(
+      process.cwd(),
+      "scripts/worldcover-capital-spawn-report.json",
+    );
+    const report = JSON.parse(fs.readFileSync(reportPath, "utf8")) as {
+      placed: number;
+      max_snap_pixels: number;
+      excluded: unknown[];
+      countries: { snap_pixels: number }[];
+    };
+
+    expect(report.placed).toBe(167);
+    expect(report.excluded).toHaveLength(26);
+    expect(report.max_snap_pixels).toBe(9);
+    expect(
+      Math.max(...report.countries.map((entry) => entry.snap_pixels)),
+    ).toBeLessThanOrEqual(report.max_snap_pixels);
+    expect(
+      report.countries.filter((entry) => entry.snap_pixels === 0),
+    ).toHaveLength(121);
   });
 
   it("loads the 8K playfield and scales named spawns onto land", async () => {
@@ -126,5 +174,5 @@ describe("WorldCover map assets", () => {
       const scaledY = Math.floor(y * scale);
       expect(map.isLand(map.ref(scaledX, scaledY)), nation.name).toBe(true);
     }
-  });
+  }, 10_000);
 });

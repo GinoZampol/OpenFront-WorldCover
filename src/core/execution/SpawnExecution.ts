@@ -1,6 +1,7 @@
 import {
   Execution,
   Game,
+  GameMapType,
   GameType,
   Player,
   PlayerInfo,
@@ -95,6 +96,23 @@ export class SpawnExecution implements Execution {
 
   private getSpawn(center?: TileRef): Spawn | undefined {
     if (center !== undefined) {
+      if (
+        this.playerInfo.playerType === PlayerType.Nation &&
+        this.mg.config().gameConfig().gameMap === GameMapType.WorldCover
+      ) {
+        if (
+          !this.mg.isLand(center) ||
+          this.mg.hasOwner(center) ||
+          this.mg.isImpassable(center)
+        ) {
+          return;
+        }
+        // Capital points can be only a pixel apart (for example Kinshasa and
+        // Brazzaville). Start each country on its unique capital pixel so one
+        // nation's normal radius-four spawn cannot cover another capital.
+        return { center, tiles: [center] };
+      }
+
       const tiles = getSpawnTiles(this.mg, center, false);
 
       if (!tiles.length) {

@@ -1,0 +1,1811 @@
+{
+  "source": "https://gitlab.com/restcountries/restcountries/-/raw/master/src/main/resources/countriesV3.1.json",
+  "crop_top": 0.035,
+  "crop_bottom": 0.16,
+  "max_snap_pixels": 9,
+  "placed": 167,
+  "excluded": [
+    {
+      "name": "Antigua and Barbuda",
+      "capital": "Saint John's",
+      "projected": [2100, 1184]
+    },
+    {
+      "name": "Bahamas",
+      "capital": "Nassau",
+      "projected": [1825, 1042]
+    },
+    {
+      "name": "Barbados",
+      "capital": "Bridgetown",
+      "projected": [2140, 1255]
+    },
+    {
+      "name": "Cape Verde",
+      "capital": "Praia",
+      "projected": [2782, 1223]
+    },
+    {
+      "name": "Comoros",
+      "capital": "Moroni",
+      "projected": [3969, 1696]
+    },
+    {
+      "name": "Dominica",
+      "capital": "Roseau",
+      "projected": [2108, 1216]
+    },
+    {
+      "name": "Grenada",
+      "capital": "St. George's",
+      "projected": [2102, 1274]
+    },
+    {
+      "name": "Kiribati",
+      "capital": "South Tarawa",
+      "projected": [6275, 1464]
+    },
+    {
+      "name": "Maldives",
+      "capital": "Malé",
+      "projected": [4507, 1414]
+    },
+    {
+      "name": "Malta",
+      "capital": "Valletta",
+      "projected": [3458, 850]
+    },
+    {
+      "name": "Marshall Islands",
+      "capital": "Majuro",
+      "projected": [6247, 1362]
+    },
+    {
+      "name": "Mauritius",
+      "capital": "Port Louis",
+      "projected": [4222, 1846]
+    },
+    {
+      "name": "Micronesia",
+      "capital": "Palikir",
+      "projected": [6012, 1365]
+    },
+    {
+      "name": "Nauru",
+      "capital": "Yaren",
+      "projected": [6167, 1498]
+    },
+    {
+      "name": "Palau",
+      "capital": "Ngerulmud",
+      "projected": [5593, 1355]
+    },
+    {
+      "name": "Saint Kitts and Nevis",
+      "capital": "Basseterre",
+      "projected": [2085, 1180]
+    },
+    {
+      "name": "Saint Lucia",
+      "capital": "Castries",
+      "projected": [2116, 1239]
+    },
+    {
+      "name": "Saint Vincent and the Grenadines",
+      "capital": "Kingstown",
+      "projected": [2112, 1255]
+    },
+    {
+      "name": "Samoa",
+      "capital": "Apia",
+      "projected": [146, 1734]
+    },
+    {
+      "name": "Seychelles",
+      "capital": "Victoria",
+      "projected": [4186, 1570]
+    },
+    {
+      "name": "Solomon Islands",
+      "capital": "Honiara",
+      "projected": [6044, 1656]
+    },
+    {
+      "name": "São Tomé and Príncipe",
+      "capital": "São Tomé",
+      "projected": [3320, 1482]
+    },
+    {
+      "name": "Tonga",
+      "capital": "Nuku'alofa",
+      "projected": [85, 1864]
+    },
+    {
+      "name": "Trinidad and Tobago",
+      "capital": "Port of Spain",
+      "projected": [2106, 1299]
+    },
+    {
+      "name": "Tuvalu",
+      "capital": "Funafuti",
+      "projected": [6386, 1639]
+    },
+    {
+      "name": "Vanuatu",
+      "capital": "Port Vila",
+      "projected": [6192, 1803]
+    }
+  ],
+  "countries": [
+    {
+      "name": "Afghanistan",
+      "flag": "af",
+      "capital": "Kabul",
+      "latitude": 34.52,
+      "longitude": 69.18,
+      "projected": [4430, 874],
+      "coordinates": [4430, 874],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Albania",
+      "flag": "al",
+      "capital": "Tirana",
+      "latitude": 41.32,
+      "longitude": 19.82,
+      "projected": [3552, 753],
+      "coordinates": [3552, 753],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Algeria",
+      "flag": "dz",
+      "capital": "Algiers",
+      "latitude": 36.75,
+      "longitude": 3.05,
+      "projected": [3254, 835],
+      "coordinates": [3253, 835],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Andorra",
+      "flag": "ad",
+      "capital": "Andorra la Vella",
+      "latitude": 42.5,
+      "longitude": 1.52,
+      "projected": [3227, 732],
+      "coordinates": [3227, 732],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Angola",
+      "flag": "ao",
+      "capital": "Luanda",
+      "latitude": -8.83,
+      "longitude": 13.22,
+      "projected": [3435, 1645],
+      "coordinates": [3436, 1645],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Argentina",
+      "flag": "ar",
+      "capital": "Buenos Aires",
+      "latitude": -34.58,
+      "longitude": -58.67,
+      "projected": [2157, 2103],
+      "coordinates": [2157, 2103],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Armenia",
+      "flag": "am",
+      "capital": "Yerevan",
+      "latitude": 40.17,
+      "longitude": 44.5,
+      "projected": [3991, 774],
+      "coordinates": [3991, 774],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Australia",
+      "flag": "au",
+      "capital": "Canberra",
+      "latitude": -35.27,
+      "longitude": 149.13,
+      "projected": [5851, 2115],
+      "coordinates": [5851, 2115],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Austria",
+      "flag": "at",
+      "capital": "Vienna",
+      "latitude": 48.2,
+      "longitude": 16.37,
+      "projected": [3491, 631],
+      "coordinates": [3491, 631],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Azerbaijan",
+      "flag": "az",
+      "capital": "Baku",
+      "latitude": 40.38,
+      "longitude": 49.87,
+      "projected": [4087, 770],
+      "coordinates": [4087, 769],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Bahrain",
+      "flag": "bh",
+      "capital": "Manama",
+      "latitude": 26.23,
+      "longitude": 50.57,
+      "projected": [4099, 1022],
+      "coordinates": [4091, 1021],
+      "snap_pixels": 8.06
+    },
+    {
+      "name": "Bangladesh",
+      "flag": "bd",
+      "capital": "Dhaka",
+      "latitude": 23.72,
+      "longitude": 90.4,
+      "projected": [4807, 1066],
+      "coordinates": [4807, 1066],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Belarus",
+      "flag": "by",
+      "capital": "Minsk",
+      "latitude": 53.9,
+      "longitude": 27.57,
+      "projected": [3690, 530],
+      "coordinates": [3690, 530],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Belgium",
+      "flag": "be",
+      "capital": "Brussels",
+      "latitude": 50.83,
+      "longitude": 4.33,
+      "projected": [3277, 584],
+      "coordinates": [3277, 584],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Belize",
+      "flag": "bz",
+      "capital": "Belmopan",
+      "latitude": 17.25,
+      "longitude": -88.77,
+      "projected": [1622, 1181],
+      "coordinates": [1622, 1181],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Benin",
+      "flag": "bj",
+      "capital": "Porto-Novo",
+      "latitude": 6.48,
+      "longitude": 2.62,
+      "projected": [3247, 1373],
+      "coordinates": [3247, 1373],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Bhutan",
+      "flag": "bt",
+      "capital": "Thimphu",
+      "latitude": 27.47,
+      "longitude": 89.63,
+      "projected": [4793, 1000],
+      "coordinates": [4793, 1000],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Bolivia",
+      "flag": "bo",
+      "capital": "Sucre",
+      "latitude": -19.02,
+      "longitude": -65.26,
+      "projected": [2040, 1826],
+      "coordinates": [2040, 1826],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Bosnia and Herzegovina",
+      "flag": "ba",
+      "capital": "Sarajevo",
+      "latitude": 43.87,
+      "longitude": 18.42,
+      "projected": [3527, 708],
+      "coordinates": [3527, 708],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Botswana",
+      "flag": "bw",
+      "capital": "Gaborone",
+      "latitude": -24.63,
+      "longitude": 25.9,
+      "projected": [3660, 1926],
+      "coordinates": [3660, 1926],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Brazil",
+      "flag": "br",
+      "capital": "Brasília",
+      "latitude": -15.79,
+      "longitude": -47.88,
+      "projected": [2349, 1769],
+      "coordinates": [2348, 1769],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Brunei",
+      "flag": "bn",
+      "capital": "Bandar Seri Begawan",
+      "latitude": 4.88,
+      "longitude": 114.93,
+      "projected": [5243, 1401],
+      "coordinates": [5243, 1401],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Bulgaria",
+      "flag": "bg",
+      "capital": "Sofia",
+      "latitude": 42.68,
+      "longitude": 23.32,
+      "projected": [3615, 729],
+      "coordinates": [3615, 729],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Burkina Faso",
+      "flag": "bf",
+      "capital": "Ouagadougou",
+      "latitude": 12.37,
+      "longitude": -1.52,
+      "projected": [3173, 1268],
+      "coordinates": [3173, 1268],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Burundi",
+      "flag": "bi",
+      "capital": "Gitega",
+      "latitude": -3.43,
+      "longitude": 29.93,
+      "projected": [3732, 1549],
+      "coordinates": [3732, 1549],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Cambodia",
+      "flag": "kh",
+      "capital": "Phnom Penh",
+      "latitude": 11.55,
+      "longitude": 104.92,
+      "projected": [5065, 1283],
+      "coordinates": [5065, 1283],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Cameroon",
+      "flag": "cm",
+      "capital": "Yaoundé",
+      "latitude": 3.85,
+      "longitude": 11.5,
+      "projected": [3404, 1420],
+      "coordinates": [3404, 1420],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Canada",
+      "flag": "ca",
+      "capital": "Ottawa",
+      "latitude": 45.42,
+      "longitude": -75.7,
+      "projected": [1854, 681],
+      "coordinates": [1854, 681],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Central African Republic",
+      "flag": "cf",
+      "capital": "Bangui",
+      "latitude": 4.37,
+      "longitude": 18.58,
+      "projected": [3530, 1410],
+      "coordinates": [3530, 1410],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Chad",
+      "flag": "td",
+      "capital": "N'Djamena",
+      "latitude": 12.1,
+      "longitude": 15.03,
+      "projected": [3467, 1273],
+      "coordinates": [3467, 1273],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Chile",
+      "flag": "cl",
+      "capital": "Santiago",
+      "latitude": -33.45,
+      "longitude": -70.67,
+      "projected": [1944, 2083],
+      "coordinates": [1944, 2083],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "China",
+      "flag": "cn",
+      "capital": "Beijing",
+      "latitude": 39.92,
+      "longitude": 116.38,
+      "projected": [5269, 778],
+      "coordinates": [5269, 778],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Colombia",
+      "flag": "co",
+      "capital": "Bogotá",
+      "latitude": 4.71,
+      "longitude": -74.07,
+      "projected": [1883, 1404],
+      "coordinates": [1883, 1404],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Costa Rica",
+      "flag": "cr",
+      "capital": "San José",
+      "latitude": 9.93,
+      "longitude": -84.09,
+      "projected": [1705, 1311],
+      "coordinates": [1705, 1311],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Croatia",
+      "flag": "hr",
+      "capital": "Zagreb",
+      "latitude": 45.8,
+      "longitude": 16,
+      "projected": [3484, 674],
+      "coordinates": [3484, 674],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Cuba",
+      "flag": "cu",
+      "capital": "Havana",
+      "latitude": 23.12,
+      "longitude": -82.35,
+      "projected": [1736, 1077],
+      "coordinates": [1736, 1078],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Cyprus",
+      "flag": "cy",
+      "capital": "Nicosia",
+      "latitude": 35.17,
+      "longitude": 33.37,
+      "projected": [3793, 863],
+      "coordinates": [3793, 863],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Czechia",
+      "flag": "cz",
+      "capital": "Prague",
+      "latitude": 50.08,
+      "longitude": 14.47,
+      "projected": [3457, 598],
+      "coordinates": [3457, 598],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "DR Congo",
+      "flag": "cd",
+      "capital": "Kinshasa",
+      "latitude": -4.32,
+      "longitude": 15.3,
+      "projected": [3472, 1565],
+      "coordinates": [3472, 1565],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Denmark",
+      "flag": "dk",
+      "capital": "Copenhagen",
+      "latitude": 55.67,
+      "longitude": 12.58,
+      "projected": [3424, 498],
+      "coordinates": [3430, 500],
+      "snap_pixels": 6.32
+    },
+    {
+      "name": "Djibouti",
+      "flag": "dj",
+      "capital": "Djibouti",
+      "latitude": 11.58,
+      "longitude": 43.15,
+      "projected": [3967, 1282],
+      "coordinates": [3967, 1284],
+      "snap_pixels": 2.0
+    },
+    {
+      "name": "Dominican Republic",
+      "flag": "do",
+      "capital": "Santo Domingo",
+      "latitude": 18.47,
+      "longitude": -69.9,
+      "projected": [1957, 1160],
+      "coordinates": [1955, 1159],
+      "snap_pixels": 2.24
+    },
+    {
+      "name": "Ecuador",
+      "flag": "ec",
+      "capital": "Quito",
+      "latitude": -0.22,
+      "longitude": -78.5,
+      "projected": [1804, 1492],
+      "coordinates": [1804, 1492],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Egypt",
+      "flag": "eg",
+      "capital": "Cairo",
+      "latitude": 30.05,
+      "longitude": 31.25,
+      "projected": [3756, 954],
+      "coordinates": [3756, 954],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "El Salvador",
+      "flag": "sv",
+      "capital": "San Salvador",
+      "latitude": 13.7,
+      "longitude": -89.2,
+      "projected": [1614, 1244],
+      "coordinates": [1614, 1244],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Equatorial Guinea",
+      "flag": "gq",
+      "capital": "Ciudad de la Paz",
+      "latitude": 1.35,
+      "longitude": 10.49,
+      "projected": [3386, 1464],
+      "coordinates": [3386, 1464],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Eritrea",
+      "flag": "er",
+      "capital": "Asmara",
+      "latitude": 15.33,
+      "longitude": 38.93,
+      "projected": [3892, 1215],
+      "coordinates": [3892, 1215],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Estonia",
+      "flag": "ee",
+      "capital": "Tallinn",
+      "latitude": 59.43,
+      "longitude": 24.72,
+      "projected": [3639, 431],
+      "coordinates": [3637, 432],
+      "snap_pixels": 2.24
+    },
+    {
+      "name": "Eswatini",
+      "flag": "sz",
+      "capital": "Mbabane",
+      "latitude": -26.32,
+      "longitude": 31.13,
+      "projected": [3753, 1956],
+      "coordinates": [3753, 1956],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Ethiopia",
+      "flag": "et",
+      "capital": "Addis Ababa",
+      "latitude": 9.03,
+      "longitude": 38.7,
+      "projected": [3888, 1327],
+      "coordinates": [3888, 1327],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Fiji",
+      "flag": "fj",
+      "capital": "Suva",
+      "latitude": -18.13,
+      "longitude": 178.42,
+      "projected": [6372, 1810],
+      "coordinates": [6372, 1809],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Finland",
+      "flag": "fi",
+      "capital": "Helsinki",
+      "latitude": 60.17,
+      "longitude": 24.93,
+      "projected": [3643, 418],
+      "coordinates": [3643, 417],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "France",
+      "flag": "fr",
+      "capital": "Paris",
+      "latitude": 48.87,
+      "longitude": 2.33,
+      "projected": [3241, 619],
+      "coordinates": [3241, 619],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Gabon",
+      "flag": "ga",
+      "capital": "Libreville",
+      "latitude": 0.38,
+      "longitude": 9.45,
+      "projected": [3368, 1481],
+      "coordinates": [3369, 1481],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Gambia",
+      "flag": "gm",
+      "capital": "Banjul",
+      "latitude": 13.45,
+      "longitude": -16.57,
+      "projected": [2905, 1249],
+      "coordinates": [2903, 1250],
+      "snap_pixels": 2.24
+    },
+    {
+      "name": "Georgia",
+      "flag": "ge",
+      "capital": "Tbilisi",
+      "latitude": 41.68,
+      "longitude": 44.83,
+      "projected": [3997, 747],
+      "coordinates": [3997, 747],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Germany",
+      "flag": "de",
+      "capital": "Berlin",
+      "latitude": 52.52,
+      "longitude": 13.4,
+      "projected": [3438, 554],
+      "coordinates": [3438, 554],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Ghana",
+      "flag": "gh",
+      "capital": "Accra",
+      "latitude": 5.55,
+      "longitude": -0.22,
+      "projected": [3196, 1389],
+      "coordinates": [3195, 1388],
+      "snap_pixels": 1.41
+    },
+    {
+      "name": "Greece",
+      "flag": "gr",
+      "capital": "Athens",
+      "latitude": 37.98,
+      "longitude": 23.73,
+      "projected": [3622, 813],
+      "coordinates": [3622, 813],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Guatemala",
+      "flag": "gt",
+      "capital": "Guatemala City",
+      "latitude": 14.62,
+      "longitude": -90.52,
+      "projected": [1591, 1228],
+      "coordinates": [1591, 1228],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Guinea",
+      "flag": "gn",
+      "capital": "Conakry",
+      "latitude": 9.5,
+      "longitude": -13.7,
+      "projected": [2956, 1319],
+      "coordinates": [2958, 1317],
+      "snap_pixels": 2.83
+    },
+    {
+      "name": "Guinea-Bissau",
+      "flag": "gw",
+      "capital": "Bissau",
+      "latitude": 11.85,
+      "longitude": -15.58,
+      "projected": [2923, 1277],
+      "coordinates": [2923, 1275],
+      "snap_pixels": 2.0
+    },
+    {
+      "name": "Guyana",
+      "flag": "gy",
+      "capital": "Georgetown",
+      "latitude": 6.8,
+      "longitude": -58.15,
+      "projected": [2166, 1367],
+      "coordinates": [2166, 1368],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Haiti",
+      "flag": "ht",
+      "capital": "Port-au-Prince",
+      "latitude": 18.53,
+      "longitude": -72.33,
+      "projected": [1914, 1159],
+      "coordinates": [1914, 1159],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Honduras",
+      "flag": "hn",
+      "capital": "Tegucigalpa",
+      "latitude": 14.1,
+      "longitude": -87.22,
+      "projected": [1649, 1237],
+      "coordinates": [1649, 1237],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Hungary",
+      "flag": "hu",
+      "capital": "Budapest",
+      "latitude": 47.5,
+      "longitude": 19.08,
+      "projected": [3539, 644],
+      "coordinates": [3539, 644],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Iceland",
+      "flag": "is",
+      "capital": "Reykjavik",
+      "latitude": 64.15,
+      "longitude": -21.95,
+      "projected": [2810, 348],
+      "coordinates": [2812, 348],
+      "snap_pixels": 2.0
+    },
+    {
+      "name": "India",
+      "flag": "in",
+      "capital": "New Delhi",
+      "latitude": 28.6,
+      "longitude": 77.2,
+      "projected": [4572, 980],
+      "coordinates": [4572, 980],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Indonesia",
+      "flag": "id",
+      "capital": "Jakarta",
+      "latitude": -6.17,
+      "longitude": 106.82,
+      "projected": [5099, 1598],
+      "coordinates": [5099, 1598],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Iran",
+      "flag": "ir",
+      "capital": "Tehran",
+      "latitude": 35.7,
+      "longitude": 51.42,
+      "projected": [4114, 853],
+      "coordinates": [4114, 853],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Iraq",
+      "flag": "iq",
+      "capital": "Baghdad",
+      "latitude": 33.33,
+      "longitude": 44.4,
+      "projected": [3989, 895],
+      "coordinates": [3989, 895],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Ireland",
+      "flag": "ie",
+      "capital": "Dublin",
+      "latitude": 53.32,
+      "longitude": -6.23,
+      "projected": [3089, 540],
+      "coordinates": [3089, 540],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Israel",
+      "flag": "il",
+      "capital": "Jerusalem",
+      "latitude": 31.77,
+      "longitude": 35.23,
+      "projected": [3826, 923],
+      "coordinates": [3826, 923],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Italy",
+      "flag": "it",
+      "capital": "Rome",
+      "latitude": 41.9,
+      "longitude": 12.48,
+      "projected": [3422, 743],
+      "coordinates": [3422, 743],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Ivory Coast",
+      "flag": "ci",
+      "capital": "Yamoussoukro",
+      "latitude": 6.82,
+      "longitude": -5.27,
+      "projected": [3106, 1367],
+      "coordinates": [3106, 1367],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Jamaica",
+      "flag": "jm",
+      "capital": "Kingston",
+      "latitude": 17.99702,
+      "longitude": -76.79358,
+      "projected": [1835, 1168],
+      "coordinates": [1835, 1167],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Japan",
+      "flag": "jp",
+      "capital": "Tokyo",
+      "latitude": 35.68,
+      "longitude": 139.75,
+      "projected": [5684, 854],
+      "coordinates": [5683, 854],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Jordan",
+      "flag": "jo",
+      "capital": "Amman",
+      "latitude": 31.95,
+      "longitude": 35.93,
+      "projected": [3839, 920],
+      "coordinates": [3839, 920],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Kazakhstan",
+      "flag": "kz",
+      "capital": "Astana",
+      "latitude": 51.16,
+      "longitude": 71.45,
+      "projected": [4470, 578],
+      "coordinates": [4470, 578],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Kenya",
+      "flag": "ke",
+      "capital": "Nairobi",
+      "latitude": -1.28,
+      "longitude": 36.82,
+      "projected": [3855, 1511],
+      "coordinates": [3855, 1511],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Kuwait",
+      "flag": "kw",
+      "capital": "Kuwait City",
+      "latitude": 29.37,
+      "longitude": 47.97,
+      "projected": [4053, 966],
+      "coordinates": [4053, 966],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Kyrgyzstan",
+      "flag": "kg",
+      "capital": "Bishkek",
+      "latitude": 42.87,
+      "longitude": 74.6,
+      "projected": [4526, 726],
+      "coordinates": [4526, 726],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Laos",
+      "flag": "la",
+      "capital": "Vientiane",
+      "latitude": 17.97,
+      "longitude": 102.6,
+      "projected": [5024, 1169],
+      "coordinates": [5024, 1169],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Latvia",
+      "flag": "lv",
+      "capital": "Riga",
+      "latitude": 56.95,
+      "longitude": 24.1,
+      "projected": [3628, 476],
+      "coordinates": [3628, 476],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Lebanon",
+      "flag": "lb",
+      "capital": "Beirut",
+      "latitude": 33.87,
+      "longitude": 35.5,
+      "projected": [3831, 886],
+      "coordinates": [3832, 886],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Lesotho",
+      "flag": "ls",
+      "capital": "Maseru",
+      "latitude": -29.32,
+      "longitude": 27.48,
+      "projected": [3689, 2009],
+      "coordinates": [3689, 2009],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Liberia",
+      "flag": "lr",
+      "capital": "Monrovia",
+      "latitude": 6.3,
+      "longitude": -10.8,
+      "projected": [3008, 1376],
+      "coordinates": [3008, 1375],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Libya",
+      "flag": "ly",
+      "capital": "Tripoli",
+      "latitude": 32.88,
+      "longitude": 13.17,
+      "projected": [3434, 903],
+      "coordinates": [3434, 904],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Liechtenstein",
+      "flag": "li",
+      "capital": "Vaduz",
+      "latitude": 47.13,
+      "longitude": 9.52,
+      "projected": [3369, 650],
+      "coordinates": [3369, 650],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Lithuania",
+      "flag": "lt",
+      "capital": "Vilnius",
+      "latitude": 54.68,
+      "longitude": 25.32,
+      "projected": [3650, 516],
+      "coordinates": [3650, 516],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Luxembourg",
+      "flag": "lu",
+      "capital": "Luxembourg",
+      "latitude": 49.6,
+      "longitude": 6.12,
+      "projected": [3309, 606],
+      "coordinates": [3309, 606],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Madagascar",
+      "flag": "mg",
+      "capital": "Antananarivo",
+      "latitude": -18.92,
+      "longitude": 47.52,
+      "projected": [4045, 1824],
+      "coordinates": [4045, 1824],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Malawi",
+      "flag": "mw",
+      "capital": "Lilongwe",
+      "latitude": -13.97,
+      "longitude": 33.78,
+      "projected": [3801, 1736],
+      "coordinates": [3801, 1736],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Malaysia",
+      "flag": "my",
+      "capital": "Kuala Lumpur",
+      "latitude": 3.17,
+      "longitude": 101.7,
+      "projected": [5008, 1432],
+      "coordinates": [5008, 1432],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Mali",
+      "flag": "ml",
+      "capital": "Bamako",
+      "latitude": 12.65,
+      "longitude": -8,
+      "projected": [3058, 1263],
+      "coordinates": [3058, 1263],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Mauritania",
+      "flag": "mr",
+      "capital": "Nouakchott",
+      "latitude": 18.07,
+      "longitude": -15.97,
+      "projected": [2916, 1167],
+      "coordinates": [2916, 1167],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Mexico",
+      "flag": "mx",
+      "capital": "Mexico City",
+      "latitude": 19.43,
+      "longitude": -99.13,
+      "projected": [1438, 1143],
+      "coordinates": [1438, 1143],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Moldova",
+      "flag": "md",
+      "capital": "Chișinău",
+      "latitude": 47.01,
+      "longitude": 28.9,
+      "projected": [3714, 652],
+      "coordinates": [3714, 652],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Monaco",
+      "flag": "mc",
+      "capital": "Monaco",
+      "latitude": 43.73,
+      "longitude": 7.42,
+      "projected": [3332, 711],
+      "coordinates": [3332, 709],
+      "snap_pixels": 2.0
+    },
+    {
+      "name": "Mongolia",
+      "flag": "mn",
+      "capital": "Ulan Bator",
+      "latitude": 47.92,
+      "longitude": 106.91,
+      "projected": [5101, 636],
+      "coordinates": [5101, 636],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Montenegro",
+      "flag": "me",
+      "capital": "Podgorica",
+      "latitude": 42.43,
+      "longitude": 19.27,
+      "projected": [3543, 734],
+      "coordinates": [3543, 734],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Morocco",
+      "flag": "ma",
+      "capital": "Rabat",
+      "latitude": 34.02,
+      "longitude": -6.82,
+      "projected": [3079, 883],
+      "coordinates": [3080, 883],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Mozambique",
+      "flag": "mz",
+      "capital": "Maputo",
+      "latitude": -25.95,
+      "longitude": 32.58,
+      "projected": [3779, 1949],
+      "coordinates": [3779, 1947],
+      "snap_pixels": 2.0
+    },
+    {
+      "name": "Myanmar",
+      "flag": "mm",
+      "capital": "Naypyidaw",
+      "latitude": 19.76,
+      "longitude": 96.07,
+      "projected": [4908, 1137],
+      "coordinates": [4908, 1137],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Namibia",
+      "flag": "na",
+      "capital": "Windhoek",
+      "latitude": -22.57,
+      "longitude": 17.08,
+      "projected": [3504, 1889],
+      "coordinates": [3504, 1889],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Nepal",
+      "flag": "np",
+      "capital": "Kathmandu",
+      "latitude": 27.72,
+      "longitude": 85.32,
+      "projected": [4717, 995],
+      "coordinates": [4717, 995],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Netherlands",
+      "flag": "nl",
+      "capital": "Amsterdam",
+      "latitude": 52.35,
+      "longitude": 4.92,
+      "projected": [3287, 557],
+      "coordinates": [3287, 557],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "New Zealand",
+      "flag": "nz",
+      "capital": "Wellington",
+      "latitude": -41.3,
+      "longitude": 174.78,
+      "projected": [6307, 2222],
+      "coordinates": [6310, 2222],
+      "snap_pixels": 3.0
+    },
+    {
+      "name": "Nicaragua",
+      "flag": "ni",
+      "capital": "Managua",
+      "latitude": 12.13,
+      "longitude": -86.25,
+      "projected": [1667, 1272],
+      "coordinates": [1668, 1272],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Niger",
+      "flag": "ne",
+      "capital": "Niamey",
+      "latitude": 13.52,
+      "longitude": 2.12,
+      "projected": [3238, 1248],
+      "coordinates": [3238, 1248],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Nigeria",
+      "flag": "ng",
+      "capital": "Abuja",
+      "latitude": 9.08,
+      "longitude": 7.53,
+      "projected": [3334, 1327],
+      "coordinates": [3334, 1327],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "North Korea",
+      "flag": "kp",
+      "capital": "Pyongyang",
+      "latitude": 39.02,
+      "longitude": 125.75,
+      "projected": [5436, 794],
+      "coordinates": [5436, 794],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "North Macedonia",
+      "flag": "mk",
+      "capital": "Skopje",
+      "latitude": 42,
+      "longitude": 21.43,
+      "projected": [3581, 741],
+      "coordinates": [3581, 741],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Norway",
+      "flag": "no",
+      "capital": "Oslo",
+      "latitude": 59.92,
+      "longitude": 10.75,
+      "projected": [3391, 423],
+      "coordinates": [3392, 423],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Oman",
+      "flag": "om",
+      "capital": "Muscat",
+      "latitude": 23.62,
+      "longitude": 58.58,
+      "projected": [4241, 1068],
+      "coordinates": [4241, 1069],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Pakistan",
+      "flag": "pk",
+      "capital": "Islamabad",
+      "latitude": 33.68,
+      "longitude": 73.05,
+      "projected": [4499, 889],
+      "coordinates": [4499, 889],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Panama",
+      "flag": "pa",
+      "capital": "Panama City",
+      "latitude": 8.97,
+      "longitude": -79.53,
+      "projected": [1786, 1329],
+      "coordinates": [1786, 1327],
+      "snap_pixels": 2.0
+    },
+    {
+      "name": "Papua New Guinea",
+      "flag": "pg",
+      "capital": "Port Moresby",
+      "latitude": -9.45,
+      "longitude": 147.18,
+      "projected": [5817, 1656],
+      "coordinates": [5817, 1655],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Paraguay",
+      "flag": "py",
+      "capital": "Asunción",
+      "latitude": -25.28,
+      "longitude": -57.57,
+      "projected": [2177, 1937],
+      "coordinates": [2177, 1937],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Peru",
+      "flag": "pe",
+      "capital": "Lima",
+      "latitude": -12.05,
+      "longitude": -77.05,
+      "projected": [1830, 1702],
+      "coordinates": [1830, 1701],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Philippines",
+      "flag": "ph",
+      "capital": "Manila",
+      "latitude": 14.6,
+      "longitude": 120.97,
+      "projected": [5351, 1228],
+      "coordinates": [5352, 1228],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Poland",
+      "flag": "pl",
+      "capital": "Warsaw",
+      "latitude": 52.25,
+      "longitude": 21,
+      "projected": [3573, 559],
+      "coordinates": [3573, 559],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Portugal",
+      "flag": "pt",
+      "capital": "Lisbon",
+      "latitude": 38.72,
+      "longitude": -9.13,
+      "projected": [3038, 800],
+      "coordinates": [3037, 799],
+      "snap_pixels": 1.41
+    },
+    {
+      "name": "Qatar",
+      "flag": "qa",
+      "capital": "Doha",
+      "latitude": 25.28,
+      "longitude": 51.53,
+      "projected": [4116, 1039],
+      "coordinates": [4116, 1039],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Republic of the Congo",
+      "flag": "cg",
+      "capital": "Brazzaville",
+      "latitude": -4.25,
+      "longitude": 15.28,
+      "projected": [3472, 1564],
+      "coordinates": [3471, 1563],
+      "snap_pixels": 1.41
+    },
+    {
+      "name": "Romania",
+      "flag": "ro",
+      "capital": "Bucharest",
+      "latitude": 44.43,
+      "longitude": 26.1,
+      "projected": [3664, 698],
+      "coordinates": [3664, 698],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Russia",
+      "flag": "ru",
+      "capital": "Moscow",
+      "latitude": 55.75,
+      "longitude": 37.6,
+      "projected": [3868, 497],
+      "coordinates": [3868, 497],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Rwanda",
+      "flag": "rw",
+      "capital": "Kigali",
+      "latitude": -1.95,
+      "longitude": 30.05,
+      "projected": [3734, 1523],
+      "coordinates": [3734, 1523],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "San Marino",
+      "flag": "sm",
+      "capital": "City of San Marino",
+      "latitude": 43.94,
+      "longitude": 12.45,
+      "projected": [3421, 707],
+      "coordinates": [3421, 707],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Saudi Arabia",
+      "flag": "sa",
+      "capital": "Riyadh",
+      "latitude": 24.65,
+      "longitude": 46.7,
+      "projected": [4030, 1050],
+      "coordinates": [4030, 1050],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Senegal",
+      "flag": "sn",
+      "capital": "Dakar",
+      "latitude": 14.73,
+      "longitude": -17.63,
+      "projected": [2887, 1226],
+      "coordinates": [2892, 1225],
+      "snap_pixels": 5.1
+    },
+    {
+      "name": "Serbia",
+      "flag": "rs",
+      "capital": "Belgrade",
+      "latitude": 44.83,
+      "longitude": 20.5,
+      "projected": [3564, 691],
+      "coordinates": [3564, 691],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Sierra Leone",
+      "flag": "sl",
+      "capital": "Freetown",
+      "latitude": 8.48,
+      "longitude": -13.23,
+      "projected": [2965, 1337],
+      "coordinates": [2968, 1337],
+      "snap_pixels": 3.0
+    },
+    {
+      "name": "Singapore",
+      "flag": "sg",
+      "capital": "Singapore",
+      "latitude": 1.28,
+      "longitude": 103.85,
+      "projected": [5046, 1465],
+      "coordinates": [5046, 1463],
+      "snap_pixels": 2.0
+    },
+    {
+      "name": "Slovakia",
+      "flag": "sk",
+      "capital": "Bratislava",
+      "latitude": 48.15,
+      "longitude": 17.12,
+      "projected": [3504, 632],
+      "coordinates": [3504, 632],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Slovenia",
+      "flag": "si",
+      "capital": "Ljubljana",
+      "latitude": 46.05,
+      "longitude": 14.52,
+      "projected": [3458, 669],
+      "coordinates": [3458, 669],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Somalia",
+      "flag": "so",
+      "capital": "Mogadishu",
+      "latitude": 2.07,
+      "longitude": 45.33,
+      "projected": [4006, 1451],
+      "coordinates": [4005, 1451],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "South Africa",
+      "flag": "za",
+      "capital": "Pretoria",
+      "latitude": -25.7,
+      "longitude": 28.22,
+      "projected": [3702, 1945],
+      "coordinates": [3702, 1945],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "South Korea",
+      "flag": "kr",
+      "capital": "Seoul",
+      "latitude": 37.55,
+      "longitude": 126.98,
+      "projected": [5457, 820],
+      "coordinates": [5457, 820],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "South Sudan",
+      "flag": "ss",
+      "capital": "Juba",
+      "latitude": 4.85,
+      "longitude": 31.62,
+      "projected": [3762, 1402],
+      "coordinates": [3762, 1402],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Spain",
+      "flag": "es",
+      "capital": "Madrid",
+      "latitude": 40.4,
+      "longitude": -3.68,
+      "projected": [3135, 770],
+      "coordinates": [3135, 770],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Sri Lanka",
+      "flag": "lk",
+      "capital": "Sri Jayawardenepura Kotte",
+      "latitude": 6.89,
+      "longitude": 79.9,
+      "projected": [4620, 1366],
+      "coordinates": [4620, 1365],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Sudan",
+      "flag": "sd",
+      "capital": "Khartoum",
+      "latitude": 15.6,
+      "longitude": 32.53,
+      "projected": [3778, 1211],
+      "coordinates": [3778, 1211],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Suriname",
+      "flag": "sr",
+      "capital": "Paramaribo",
+      "latitude": 5.83,
+      "longitude": -55.17,
+      "projected": [2219, 1384],
+      "coordinates": [2217, 1384],
+      "snap_pixels": 2.0
+    },
+    {
+      "name": "Sweden",
+      "flag": "se",
+      "capital": "Stockholm",
+      "latitude": 59.33,
+      "longitude": 18.05,
+      "projected": [3521, 433],
+      "coordinates": [3521, 433],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Switzerland",
+      "flag": "ch",
+      "capital": "Bern",
+      "latitude": 46.92,
+      "longitude": 7.47,
+      "projected": [3333, 654],
+      "coordinates": [3333, 654],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Syria",
+      "flag": "sy",
+      "capital": "Damascus",
+      "latitude": 33.5,
+      "longitude": 36.3,
+      "projected": [3845, 892],
+      "coordinates": [3845, 892],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Tajikistan",
+      "flag": "tj",
+      "capital": "Dushanbe",
+      "latitude": 38.55,
+      "longitude": 68.77,
+      "projected": [4423, 803],
+      "coordinates": [4423, 803],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Tanzania",
+      "flag": "tz",
+      "capital": "Dodoma",
+      "latitude": -6.16,
+      "longitude": 35.75,
+      "projected": [3836, 1598],
+      "coordinates": [3836, 1598],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Thailand",
+      "flag": "th",
+      "capital": "Bangkok",
+      "latitude": 13.75,
+      "longitude": 100.52,
+      "projected": [4987, 1244],
+      "coordinates": [4987, 1244],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Timor-Leste",
+      "flag": "tl",
+      "capital": "Dili",
+      "latitude": -8.58,
+      "longitude": 125.6,
+      "projected": [5433, 1641],
+      "coordinates": [5433, 1641],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Togo",
+      "flag": "tg",
+      "capital": "Lomé",
+      "latitude": 6.14,
+      "longitude": 1.21,
+      "projected": [3222, 1379],
+      "coordinates": [3222, 1377],
+      "snap_pixels": 2.0
+    },
+    {
+      "name": "Tunisia",
+      "flag": "tn",
+      "capital": "Tunis",
+      "latitude": 36.8,
+      "longitude": 10.18,
+      "projected": [3381, 834],
+      "coordinates": [3381, 834],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Turkey",
+      "flag": "tr",
+      "capital": "Ankara",
+      "latitude": 39.93,
+      "longitude": 32.87,
+      "projected": [3784, 778],
+      "coordinates": [3784, 778],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Turkmenistan",
+      "flag": "tm",
+      "capital": "Ashgabat",
+      "latitude": 37.95,
+      "longitude": 58.38,
+      "projected": [4238, 813],
+      "coordinates": [4238, 813],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Uganda",
+      "flag": "ug",
+      "capital": "Kampala",
+      "latitude": 0.32,
+      "longitude": 32.55,
+      "projected": [3779, 1482],
+      "coordinates": [3779, 1482],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Ukraine",
+      "flag": "ua",
+      "capital": "Kyiv",
+      "latitude": 50.43,
+      "longitude": 30.52,
+      "projected": [3743, 591],
+      "coordinates": [3743, 591],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "United Arab Emirates",
+      "flag": "ae",
+      "capital": "Abu Dhabi",
+      "latitude": 24.47,
+      "longitude": 54.37,
+      "projected": [4167, 1053],
+      "coordinates": [4170, 1054],
+      "snap_pixels": 3.16
+    },
+    {
+      "name": "United Kingdom",
+      "flag": "gb",
+      "capital": "London",
+      "latitude": 51.5,
+      "longitude": -0.08,
+      "projected": [3199, 572],
+      "coordinates": [3199, 572],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "United States",
+      "flag": "us",
+      "capital": "Washington, D.C.",
+      "latitude": 38.89,
+      "longitude": -77.05,
+      "projected": [1830, 797],
+      "coordinates": [1830, 797],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Uruguay",
+      "flag": "uy",
+      "capital": "Montevideo",
+      "latitude": -34.85,
+      "longitude": -56.17,
+      "projected": [2201, 2108],
+      "coordinates": [2201, 2107],
+      "snap_pixels": 1.0
+    },
+    {
+      "name": "Uzbekistan",
+      "flag": "uz",
+      "capital": "Tashkent",
+      "latitude": 41.32,
+      "longitude": 69.25,
+      "projected": [4431, 753],
+      "coordinates": [4431, 753],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Venezuela",
+      "flag": "ve",
+      "capital": "Caracas",
+      "latitude": 10.48,
+      "longitude": -66.87,
+      "projected": [2011, 1302],
+      "coordinates": [2011, 1302],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Vietnam",
+      "flag": "vn",
+      "capital": "Hanoi",
+      "latitude": 21.03,
+      "longitude": 105.85,
+      "projected": [5082, 1114],
+      "coordinates": [5082, 1114],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Yemen",
+      "flag": "ye",
+      "capital": "Sana'a",
+      "latitude": 15.37,
+      "longitude": 44.19,
+      "projected": [3986, 1215],
+      "coordinates": [3986, 1215],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Zambia",
+      "flag": "zm",
+      "capital": "Lusaka",
+      "latitude": -15.42,
+      "longitude": 28.28,
+      "projected": [3703, 1762],
+      "coordinates": [3703, 1762],
+      "snap_pixels": 0.0
+    },
+    {
+      "name": "Zimbabwe",
+      "flag": "zw",
+      "capital": "Harare",
+      "latitude": -17.82,
+      "longitude": 31.03,
+      "projected": [3752, 1805],
+      "coordinates": [3752, 1805],
+      "snap_pixels": 0.0
+    }
+  ]
+}
