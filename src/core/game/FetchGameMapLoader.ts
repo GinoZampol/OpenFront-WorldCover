@@ -51,7 +51,9 @@ export class FetchGameMapLoader implements GameMapLoader {
   }
 
   private url(map: string, path: string) {
-    return this.resolveUrl(`${map}/${path}`);
+    const url = this.resolveUrl(`${map}/${path}`);
+    const separator = url.includes("?") ? "&" : "?";
+    return `${url}${separator}v=${encodeURIComponent(__BUILD_VERSION__)}`;
   }
 
   private async loadBinaryFromUrl(url: string) {

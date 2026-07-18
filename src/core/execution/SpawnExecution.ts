@@ -107,10 +107,25 @@ export class SpawnExecution implements Execution {
         ) {
           return;
         }
-        // Capital points can be only a pixel apart (for example Kinshasa and
-        // Brazzaville). Start each country on its unique capital pixel so one
-        // nation's normal radius-four spawn cannot cover another capital.
-        return { center, tiles: [center] };
+        // Keep the normal radius-four nation footprint, but reserve every
+        // other configured capital. This lets close neighbors such as
+        // Kinshasa and Brazzaville both remain centered on their real capitals
+        // without shrinking every country to a single pixel.
+        const reservedCapitals = new Set(
+          this.mg
+            .nations()
+            .filter((nation) => nation.playerInfo.id !== this.playerInfo.id)
+            .flatMap((nation) => {
+              const cell = nation.spawnCell;
+              return cell === undefined || !this.mg.isValidCoord(cell.x, cell.y)
+                ? []
+                : [this.mg.ref(cell.x, cell.y)];
+            }),
+        );
+        const tiles = getSpawnTiles(this.mg, center, false).filter(
+          (tile) => !reservedCapitals.has(tile),
+        );
+        return { center, tiles };
       }
 
       const tiles = getSpawnTiles(this.mg, center, false);

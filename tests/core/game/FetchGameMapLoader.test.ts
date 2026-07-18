@@ -18,13 +18,13 @@ describe("FetchGameMapLoader", () => {
     const mapData = loader.getMapData(GameMapType.BritanniaClassic);
 
     expect(mapData.webpPath).toBe(
-      "/_assets/maps/britanniaclassic/thumbnail.webp.hashed",
+      "/_assets/maps/britanniaclassic/thumbnail.webp.hashed?v=DEV",
     );
 
     await mapData.manifest();
 
     expect(fetchMock).toHaveBeenCalledWith(
-      "/_assets/maps/britanniaclassic/manifest.json.hashed",
+      "/_assets/maps/britanniaclassic/manifest.json.hashed?v=DEV",
     );
   });
 });

@@ -18,6 +18,17 @@ async function createTestGame(
   nationCells: { x: number; y: number }[],
   gameMap: GameMapType = GameMapType.Asia,
 ) {
+  const nations: { info: PlayerInfo; nation: Nation }[] = nationCells.map(
+    (cell, i) => {
+      const info = new PlayerInfo(
+        nationCells.length === 1 ? "TestNation" : `Nation${i}`,
+        PlayerType.Nation,
+        null,
+        nationCells.length === 1 ? "nation_id" : `nation_${i}`,
+      );
+      return { info, nation: new Nation(new Cell(cell.x, cell.y), info) };
+    },
+  );
   const game = await setup(
     "plains",
     { randomSpawn, gameMap } as Partial<GameConfig>,
@@ -25,6 +36,7 @@ async function createTestGame(
     undefined,
     undefined,
     false,
+    nations.map(({ nation }) => nation),
   );
 
   const humanInfo = new PlayerInfo(
@@ -35,20 +47,8 @@ async function createTestGame(
   );
   game.addPlayer(humanInfo);
 
-  const nations: { info: PlayerInfo; nation: Nation }[] = [];
-  for (let i = 0; i < nationCells.length; i++) {
-    const info = new PlayerInfo(
-      nationCells.length === 1 ? "TestNation" : `Nation${i}`,
-      PlayerType.Nation,
-      null,
-      nationCells.length === 1 ? "nation_id" : `nation_${i}`,
-    );
-    const nation = new Nation(
-      new Cell(nationCells[i].x, nationCells[i].y),
-      info,
-    );
+  for (const { info } of nations) {
     game.addPlayer(info);
-    nations.push({ info, nation });
   }
 
   return { game, humanInfo, nations };
@@ -129,7 +129,7 @@ describe("Nation spawn ordering with random spawn", () => {
     for (let i = 0; i < nations.length; i++) {
       const player = game.player(nations[i].info.id);
       expect(player.spawnTile()).toBe(game.ref(cells[i].x, cells[i].y));
-      expect(player.numTilesOwned()).toBe(1);
+      expect(player.numTilesOwned()).toBeGreaterThan(1);
     }
 
     // Standard maps move nations around during the spawn phase. WorldCover

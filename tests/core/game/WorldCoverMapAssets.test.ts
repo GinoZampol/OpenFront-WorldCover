@@ -5,6 +5,7 @@ import {
   genTerrainFromBin,
   MapManifest,
 } from "../../../src/core/game/TerrainMapLoader";
+import { WORLD_COVER_NATION_COUNT } from "../../../src/core/game/WorldCover";
 
 describe("WorldCover map assets", () => {
   it("loads the generated map and keeps every named spawn on land", async () => {
@@ -20,7 +21,7 @@ describe("WorldCover map assets", () => {
     );
 
     expect(manifest.land_value_mode).toBe("worldcover");
-    expect(manifest.nations).toHaveLength(167);
+    expect(manifest.nations).toHaveLength(WORLD_COVER_NATION_COUNT);
     expect(
       new Set(manifest.nations.map((nation) => nation.coordinates?.join(",")))
         .size,

@@ -98,6 +98,8 @@ export default defineConfig(({ mode }) => {
     ? requestedStaticBase
     : `${requestedStaticBase}/`;
   const devNumWorkers = parseInt(env.NUM_WORKERS ?? "2", 10);
+  const buildVersion =
+    env.GIT_COMMIT ?? process.env.GIT_COMMIT ?? process.env.GITHUB_SHA ?? "DEV";
   const resourcesDir = getResourcesDir(__dirname);
   const proprietaryDir = getProprietaryDir(__dirname);
   const sourceDirs = [resourcesDir, proprietaryDir];
@@ -261,6 +263,7 @@ export default defineConfig(({ mode }) => {
 
     define: {
       __ASSET_MANIFEST__: JSON.stringify(assetManifest),
+      __BUILD_VERSION__: JSON.stringify(buildVersion),
       "process.env.WEBSOCKET_URL": JSON.stringify(
         isProduction ? "" : "localhost:3000",
       ),

@@ -13,6 +13,7 @@ import {
   maps,
   UnitType,
 } from "../core/game/Game";
+import { WORLD_COVER_NATION_COUNT } from "../core/game/WorldCover";
 import { TeamCountConfig } from "../core/Schemas";
 import { generateID } from "../core/Util";
 import { hasLinkedAccount } from "./Api";
@@ -117,8 +118,8 @@ export class SinglePlayerModal extends BaseModal {
   @state() private selectedMap: GameMapType = DEFAULT_OPTIONS.selectedMap;
   @state() private selectedDifficulty: Difficulty =
     DEFAULT_OPTIONS.selectedDifficulty;
-  @state() private nations: number = 0;
-  @state() private defaultNationCount: number = 0;
+  @state() private nations: number = WORLD_COVER_NATION_COUNT;
+  @state() private defaultNationCount: number = WORLD_COVER_NATION_COUNT;
   @state() private bots: number = DEFAULT_OPTIONS.bots;
   @state() private infiniteGold: boolean = DEFAULT_OPTIONS.infiniteGold;
   @state() private infiniteTroops: boolean = DEFAULT_OPTIONS.infiniteTroops;
@@ -560,8 +561,8 @@ export class SinglePlayerModal extends BaseModal {
     this.gameMode = DEFAULT_OPTIONS.gameMode;
     this.useRandomMap = DEFAULT_OPTIONS.useRandomMap;
     this.bots = DEFAULT_OPTIONS.bots;
-    this.nations = 0;
-    this.defaultNationCount = 0;
+    this.nations = WORLD_COVER_NATION_COUNT;
+    this.defaultNationCount = WORLD_COVER_NATION_COUNT;
     this.infiniteGold = DEFAULT_OPTIONS.infiniteGold;
     this.infiniteTroops = DEFAULT_OPTIONS.infiniteTroops;
     this.compactMap = DEFAULT_OPTIONS.compactMap;
@@ -1007,14 +1008,18 @@ export class SinglePlayerModal extends BaseModal {
       const manifest = await mapData.manifest();
       // Only update if the map hasn't changed
       if (this.selectedMap === currentMap) {
-        this.defaultNationCount = manifest.nations.length;
+        const nationCount =
+          currentMap === GameMapType.WorldCover
+            ? WORLD_COVER_NATION_COUNT
+            : manifest.nations.length;
+        this.defaultNationCount = nationCount;
         const compact =
           this.selectedMap === GameMapType.WorldCover
             ? this.worldCoverMapSize === GameMapSize.Compact
             : this.compactMap;
         this.nations = compact
-          ? Math.max(0, Math.floor(manifest.nations.length * 0.25))
-          : manifest.nations.length;
+          ? Math.max(0, Math.floor(nationCount * 0.25))
+          : nationCount;
       }
     } catch (error) {
       console.warn("Failed to load nation count", error);

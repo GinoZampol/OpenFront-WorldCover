@@ -6,6 +6,9 @@ export interface WorldCoverClass {
   resistance: "plains" | "highland" | "mountain";
 }
 
+/** Number of real-country capital spawns configured for WorldCover. */
+export const WORLD_COVER_NATION_COUNT = 167;
+
 /** Permanent economic floor granted to every player on the WorldCover map. */
 export const WORLD_COVER_STARTING_LAND_VALUE = 1_000;
 

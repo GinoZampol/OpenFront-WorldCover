@@ -1,5 +1,7 @@
 /// <reference types="vite/client" />
 
+declare const __BUILD_VERSION__: string;
+
 declare module "*.bin" {
   const binContent: string;
   export default binContent;
