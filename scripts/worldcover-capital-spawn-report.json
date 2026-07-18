@@ -3,7 +3,7 @@
   "crop_top": 0.035,
   "crop_bottom": 0.16,
   "max_snap_pixels": 9,
-  "placed": 167,
+  "placed": 164,
   "excluded": [
     {
       "name": "Antigua and Barbuda",
@@ -166,16 +166,6 @@
       "projected": [3254, 835],
       "coordinates": [3253, 835],
       "snap_pixels": 1.0
-    },
-    {
-      "name": "Andorra",
-      "flag": "ad",
-      "capital": "Andorra la Vella",
-      "latitude": 42.5,
-      "longitude": 1.52,
-      "projected": [3227, 732],
-      "coordinates": [3227, 732],
-      "snap_pixels": 0.0
     },
     {
       "name": "Angola",
@@ -1118,16 +1108,6 @@
       "snap_pixels": 0.0
     },
     {
-      "name": "Monaco",
-      "flag": "mc",
-      "capital": "Monaco",
-      "latitude": 43.73,
-      "longitude": 7.42,
-      "projected": [3332, 711],
-      "coordinates": [3332, 709],
-      "snap_pixels": 2.0
-    },
-    {
       "name": "Mongolia",
       "flag": "mn",
       "capital": "Ulan Bator",
@@ -1415,16 +1395,6 @@
       "longitude": 30.05,
       "projected": [3734, 1523],
       "coordinates": [3734, 1523],
-      "snap_pixels": 0.0
-    },
-    {
-      "name": "San Marino",
-      "flag": "sm",
-      "capital": "City of San Marino",
-      "latitude": 43.94,
-      "longitude": 12.45,
-      "projected": [3421, 707],
-      "coordinates": [3421, 707],
       "snap_pixels": 0.0
     },
     {

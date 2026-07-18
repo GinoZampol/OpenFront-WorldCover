@@ -10,6 +10,7 @@ tile that remains playable at every selectable WorldCover resolution.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -21,6 +22,81 @@ REFERENCE_WIDTH = 6400
 REFERENCE_HEIGHT = 2576
 DEFAULT_CROP_TOP = 0.035
 DEFAULT_CROP_BOTTOM = 0.16
+
+# Recognizable anchors for prominent countries. Remaining countries receive a
+# stable color from the curated palette below, so their identity never changes
+# between games or map resolutions.
+COUNTRY_COLORS = {
+    "Argentina": "#5996C8",
+    "Australia": "#405F9E",
+    "Brazil": "#3F8654",
+    "Canada": "#B64A4A",
+    "China": "#B73D45",
+    "Colombia": "#C4973B",
+    "Egypt": "#B18A45",
+    "Finland": "#4678A8",
+    "France": "#486FA8",
+    "Germany": "#B48C3C",
+    "India": "#C27B3C",
+    "Indonesia": "#AD4A4F",
+    "Iran": "#3E8077",
+    "Italy": "#4C865D",
+    "Japan": "#B34855",
+    "Mexico": "#4B8058",
+    "Netherlands": "#C16D3D",
+    "New Zealand": "#4B6599",
+    "Nigeria": "#4A8756",
+    "Norway": "#A84952",
+    "Pakistan": "#477A54",
+    "Poland": "#B65C70",
+    "Russia": "#91485D",
+    "Saudi Arabia": "#4A7E56",
+    "South Africa": "#4F8059",
+    "Spain": "#C3923F",
+    "Sweden": "#4D78A5",
+    "Turkey": "#AC4850",
+    "Ukraine": "#527DAA",
+    "United Kingdom": "#405F91",
+    "United States": "#315B9A",
+}
+
+COUNTRY_COLOR_PALETTE = (
+    "#5D719A",
+    "#A65357",
+    "#52805F",
+    "#B18445",
+    "#745F96",
+    "#4D8188",
+    "#A05D7B",
+    "#718044",
+    "#956548",
+    "#557DA4",
+    "#895660",
+    "#4F7B72",
+    "#AD7046",
+    "#626B94",
+    "#70884E",
+    "#9B536B",
+    "#4B7894",
+    "#8D7044",
+    "#61806B",
+    "#795E8D",
+    "#9F5D47",
+    "#59808A",
+    "#7B884D",
+    "#9B5054",
+)
+
+
+def country_color(name: str) -> str:
+    explicit = COUNTRY_COLORS.get(name)
+    if explicit is not None:
+        return explicit
+    digest = hashlib.sha256(name.encode("utf-8")).digest()
+    palette_index = int.from_bytes(digest[:2], "big") % len(
+        COUNTRY_COLOR_PALETTE
+    )
+    return COUNTRY_COLOR_PALETTE[palette_index]
 
 
 def load_land_mask(path: Path, width: int, height: int) -> np.ndarray:
@@ -191,6 +267,7 @@ def main() -> None:
                 "coordinates": [x, y],
                 "name": country["name"],
                 "flag": country["flag"],
+                "color": country_color(country["name"]),
             }
         )
         report.append(

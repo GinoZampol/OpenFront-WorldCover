@@ -23,6 +23,24 @@ describe("WorldCover map assets", () => {
     expect(manifest.land_value_mode).toBe("worldcover");
     expect(manifest.nations).toHaveLength(WORLD_COVER_NATION_COUNT);
     expect(
+      manifest.nations.every((nation) => /^#[0-9A-F]{6}$/.test(nation.color!)),
+    ).toBe(true);
+    expect(
+      Object.fromEntries(
+        manifest.nations.map((nation) => [nation.name, nation.color]),
+      ),
+    ).toMatchObject({
+      Brazil: "#3F8654",
+      China: "#B73D45",
+      "United States": "#315B9A",
+    });
+    expect(manifest.nations.map((nation) => nation.name)).not.toEqual(
+      expect.arrayContaining(["Andorra", "Monaco", "San Marino"]),
+    );
+    expect(manifest.nations.map((nation) => nation.name)).toEqual(
+      expect.arrayContaining(["Fiji", "Liechtenstein", "Singapore"]),
+    );
+    expect(
       new Set(manifest.nations.map((nation) => nation.coordinates?.join(",")))
         .size,
     ).toBe(manifest.nations.length);
@@ -82,7 +100,7 @@ describe("WorldCover map assets", () => {
       countries: { snap_pixels: number }[];
     };
 
-    expect(report.placed).toBe(167);
+    expect(report.placed).toBe(164);
     expect(report.excluded).toHaveLength(26);
     expect(report.max_snap_pixels).toBe(9);
     expect(
@@ -90,7 +108,7 @@ describe("WorldCover map assets", () => {
     ).toBeLessThanOrEqual(report.max_snap_pixels);
     expect(
       report.countries.filter((entry) => entry.snap_pixels === 0),
-    ).toHaveLength(121);
+    ).toHaveLength(119);
   });
 
   it("loads the 8K playfield and scales named spawns onto land", async () => {

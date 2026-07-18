@@ -25,7 +25,7 @@ import {
   PlayerUpdate,
   UnitUpdate,
 } from "../../src/core/game/GameUpdates";
-import { TerrainMapData } from "../../src/core/game/TerrainMapLoader";
+import { Nation, TerrainMapData } from "../../src/core/game/TerrainMapLoader";
 import { Player, PlayerCosmetics } from "../../src/core/Schemas";
 import { WorkerClient } from "../../src/core/worker/WorkerClient";
 
@@ -110,19 +110,22 @@ export interface GameViewStubOptions {
   config?: Config;
   terrain?: Uint8Array;
   landValueMode?: LandValueMode;
+  nations?: Nation[];
 }
 
 /** Construct a GameView with minimal dependencies. */
 export function makeGameView(opts: GameViewStubOptions = {}): GameView {
+  const terrainMap = stubTerrainMap(
+    opts.width ?? 10,
+    opts.height ?? 10,
+    opts.terrain,
+    opts.landValueMode,
+  );
+  terrainMap.nations = opts.nations ?? [];
   return new GameView(
     stubWorker(),
     opts.config ?? stubConfig(),
-    stubTerrainMap(
-      opts.width ?? 10,
-      opts.height ?? 10,
-      opts.terrain,
-      opts.landValueMode,
-    ),
+    terrainMap,
     opts.myClientID,
     opts.myUsername ?? "tester",
     opts.myClanTag ?? null,

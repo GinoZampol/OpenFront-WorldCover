@@ -48,6 +48,24 @@ describe("GameView.update — players", () => {
     expect(game.players().map((p) => p.id())).toEqual(["alice", "bob"]);
   });
 
+  it("uses a manifest nation's color for its territory", () => {
+    const game = makeGameView({
+      nations: [{ name: "Brazil", color: "#3F8654", flag: "br" }],
+    });
+    game.update(
+      withPlayers(1, [
+        makePlayerUpdate({
+          id: "brazil",
+          smallID: 1,
+          clientID: undefined,
+          name: "Brazil",
+        }),
+      ]),
+    );
+
+    expect(game.player("brazil").territoryColor().toHex()).toBe("#3f8654");
+  });
+
   it("reuses an existing PlayerView on subsequent updates (in-place data swap)", () => {
     const game = makeGameView();
     game.update(

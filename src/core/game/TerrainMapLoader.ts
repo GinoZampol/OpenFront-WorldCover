@@ -52,12 +52,14 @@ export interface MapManifest {
 }
 
 export interface Nation {
+  color?: string;
   coordinates?: [number, number];
   flag?: string;
   name: string;
 }
 
 export interface AdditionalNation {
+  color?: string;
   coordinates?: [number, number];
   flag?: string;
   name: string;

@@ -45,7 +45,7 @@ import { terrainMapFileLoader } from "./TerrainMapFileLoader";
 const DEFAULT_OPTIONS = {
   selectedMap: GameMapType.WorldCover,
   selectedDifficulty: Difficulty.Easy,
-  bots: 400,
+  bots: 0,
   infiniteGold: false,
   infiniteTroops: false,
   compactMap: false,

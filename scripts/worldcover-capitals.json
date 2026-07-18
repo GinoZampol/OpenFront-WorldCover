@@ -27,13 +27,6 @@
       "longitude": 3.05
     },
     {
-      "name": "Andorra",
-      "flag": "ad",
-      "capital": "Andorra la Vella",
-      "latitude": 42.5,
-      "longitude": 1.52
-    },
-    {
       "name": "Angola",
       "flag": "ao",
       "capital": "Luanda",
@@ -783,13 +776,6 @@
       "longitude": 28.9
     },
     {
-      "name": "Monaco",
-      "flag": "mc",
-      "capital": "Monaco",
-      "latitude": 43.73,
-      "longitude": 7.42
-    },
-    {
       "name": "Mongolia",
       "flag": "mn",
       "capital": "Ulan Bator",
@@ -1033,13 +1019,6 @@
       "capital": "Apia",
       "latitude": -13.82,
       "longitude": -171.77
-    },
-    {
-      "name": "San Marino",
-      "flag": "sm",
-      "capital": "City of San Marino",
-      "latitude": 43.94,
-      "longitude": 12.45
     },
     {
       "name": "Saudi Arabia",
